@@ -1,0 +1,34 @@
+# Example pipeline: Research → Analyze → Write
+# Usage: uv run python examples/research_pipeline.yaml
+# Then: uv run python -c "from examples.research_pipeline import main; import asyncio; asyncio.run(main())"
+
+name: research_pipeline
+topology: sequential
+settings:
+  cost_budget_usd: 0.50
+  token_budget: 20000
+  enable_circuit_breaker: true
+  enable_context_compression: true
+  max_chain_length: 5
+
+agents:
+  - id: researcher
+    role: researcher
+    model: openrouter/owl-alpha
+    temperature: 0.3
+    max_tokens: 2000
+    context_budget_tokens: 6000
+
+  - id: analyzer
+    role: analyzer
+    model: openrouter/owl-alpha
+    temperature: 0.2
+    max_tokens: 1500
+    context_budget_tokens: 4000
+
+  - id: writer
+    role: writer
+    model: openrouter/owl-alpha
+    temperature: 0.5
+    max_tokens: 3000
+    context_budget_tokens: 8000
