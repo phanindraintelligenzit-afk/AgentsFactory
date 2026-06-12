@@ -124,11 +124,11 @@ def main():
         total_success += results["success"]
         total_errors += results["errors"]
 
-        if (i // batch_size) % 10 == 0:
+        if (i // batch_size) % 50 == 0:
             print(f"  Progress: {min(i+batch_size, len(leads))}/{len(leads)} | Success: {total_success} | Errors: {total_errors}")
 
         # Rate limit: Notion allows ~3 requests/second
-        time.sleep(0.4)
+        time.sleep(0.1)
 
     print(f"\n✅ Import complete!")
     print(f"  Total: {len(leads)}")
