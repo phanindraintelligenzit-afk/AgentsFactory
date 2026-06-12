@@ -125,16 +125,16 @@ def post_to_all_platforms(post_set: dict = None, schedule_hours: float = 0.25) -
 
     # Instagram (requires media URL — rotate through branded images)
     INSTAGRAM_MEDIA_URLS = [
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/01_brand_welcome.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/02_day_progress.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/03_ai_agent_explainer.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/04_services_overview.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/05_what_are_agents.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/06_behind_scenes.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/07_testimonial.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/08_five_things_learned.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/09_workflow_diagram.png",
-        "https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/social-assets/10_cta_dm.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/01_brand_welcome.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/02_day_progress.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/03_ai_agent_explainer.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/04_services_overview.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/05_what_are_agents.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/06_behind_scenes.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/07_testimonial.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/08_five_things_learned.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/09_workflow_diagram.png",
+        "https://raw.githubusercontent.com/phanindraintelligenzit-afk/AgentsFactory/master/docs/landing/social-assets/10_cta_dm.png",
     ]
 
     # Instagram (requires media URL — use branded image)
