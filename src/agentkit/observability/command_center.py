@@ -593,6 +593,98 @@ def render_agent_kanban():
     st.divider()
 
 
+def render_linkedin_dashboard():
+    """LinkedIn / Ocoya social media dashboard."""
+    st.subheader("📱 LinkedIn — Ocoya Automation")
+
+    # Ocoya API status
+    try:
+        import sys as _sys
+        from pathlib import Path as _Path
+        _sys.path.insert(0, str(_Path(__file__).parent.parent.parent / "agents"))
+        from ocoya_client import list_posts, get_me
+        me = get_me()
+        posts = list_posts(limit=50)
+
+        # KPI row
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Total Posts", len(posts))
+        scheduled = sum(1 for p in posts if p.get("status") == "scheduled")
+        published = sum(1 for p in posts if p.get("status") == "published")
+        drafts = sum(1 for p in posts if p.get("status") == "draft")
+        c2.metric("Scheduled", scheduled)
+        c3.metric("Published", published)
+        c4.metric("Drafts", drafts)
+
+        st.divider()
+
+        # Recent posts table
+        st.subheader("Recent Posts")
+        if posts:
+            import pandas as _pd
+            rows = []
+            for p in posts[:20]:
+                rows.append({
+                    "ID": p.get("postGroupId", p.get("id", "N/A"))[:12],
+                    "Status": p.get("status", "unknown"),
+                    "Caption": (p.get("caption", "") or "")[:80] + "...",
+                    "Created": (p.get("createdAt", "") or "")[:16],
+                })
+            st.dataframe(_pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        else:
+            st.info("No posts yet. Run the LinkedIn poster to create posts.")
+
+        # Quick actions
+        st.divider()
+        st.subheader("Quick Actions")
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            if st.button("📝 Generate Post", use_container_width=True):
+                from content_scheduler import generate_post
+                post = generate_post()
+                st.session_state["linkedin_draft"] = post
+                st.success("Post generated!")
+
+        with col2:
+            if st.button("📅 Schedule Week", use_container_width=True):
+                from content_scheduler import schedule_weekly_posts
+                with st.spinner("Scheduling..."):
+                    results = schedule_weekly_posts(posts_per_day=1, days_ahead=7)
+                st.success(f"Scheduled {len(results)} posts!")
+
+        with col3:
+            if st.button("🔥 Engagement Post", use_container_width=True):
+                from engagement_agent import create_engagement_post
+                result = create_engagement_post()
+                st.success(f"Engagement post created: {result.get('postGroupId', 'N/A')}")
+
+        # Draft editor
+        if "linkedin_draft" in st.session_state:
+            st.divider()
+            st.subheader("Draft Editor")
+            draft = st.text_area("Edit post", value=st.session_state["linkedin_draft"], height=200)
+            st.session_state["linkedin_draft"] = draft
+            pc1, pc2 = st.columns(2)
+            with pc1:
+                if st.button("🚀 Post Now", use_container_width=True):
+                    from ocoya_client import post_to_linkedin
+                    result = post_to_linkedin(draft)
+                    st.success(f"Posted! ID: {result.get('postGroupId', 'N/A')}")
+                    del st.session_state["linkedin_draft"]
+            with pc2:
+                hours = st.number_input("Schedule (hours from now)", min_value=0.5, max_value=168.0, value=2.0, step=0.5)
+                if st.button("📅 Schedule", use_container_width=True):
+                    from ocoya_client import schedule_linkedin_post
+                    result = schedule_linkedin_post(draft, hours_from_now=hours)
+                    st.success(f"Scheduled! ID: {result.get('postGroupId', 'N/A')}")
+                    del st.session_state["linkedin_draft"]
+
+    except Exception as e:
+        st.error(f"Ocoya API error: {e}")
+        st.info("Make sure the Ocoya API key is configured in src/agents/ocoya_client.py")
+
+
 def main():
     st.set_page_config(
         page_title="AgentsFactory Command Center",
@@ -614,6 +706,7 @@ def main():
             "Revenue",
             "Leads",
             "Content",
+            "LinkedIn",
             "Automations",
             "Agents",
             "Kanban",
@@ -647,6 +740,9 @@ def main():
     elif page == "Content":
         render_header()
         render_content_calendar()
+    elif page == "LinkedIn":
+        render_header()
+        render_linkedin_dashboard()
     elif page == "Automations":
         render_header()
         render_automation_health()
