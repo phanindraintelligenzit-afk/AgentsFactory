@@ -119,10 +119,6 @@ def render_kpi_overview():
     projected_revenue = conn.execute(
         "SELECT COALESCE(SUM(amount), 0) FROM revenue WHERE status='projected'"
     ).fetchone()[0]
-    total_leads = conn.execute("SELECT COUNT(*) FROM leads").fetchone()[0]
-    hot_leads = conn.execute(
-        "SELECT COUNT(*) FROM leads WHERE score >= 70"
-    ).fetchone()[0]
     total_automations = conn.execute(
         "SELECT COUNT(*) FROM automation_health"
     ).fetchone()[0]
@@ -132,6 +128,13 @@ def render_kpi_overview():
     today_activity = conn.execute(
         "SELECT COUNT(*) FROM agent_activity WHERE date(created_at) = date('now')"
     ).fetchone()[0]
+
+    # Real lead counts from the main leads table
+    total_leads = conn.execute("SELECT COUNT(*) FROM leads").fetchone()[0]
+    hot_leads = conn.execute(
+        "SELECT COUNT(*) FROM leads WHERE social_lead_score IN ('HOT','Great')"
+    ).fetchone()[0]
+
     conn.close()
 
     c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
@@ -298,13 +301,38 @@ def render_revenue_dashboard():
 def render_lead_pipeline():
     st.header("Lead Pipeline")
     conn = get_db()
-    leads = conn.execute(
-        "SELECT * FROM leads ORDER BY score DESC, created_at DESC"
-    ).fetchall()
-    stage_counts = conn.execute(
-        "SELECT stage, COUNT(*) as count, COALESCE(SUM(score), 0) as total_score "
-        "FROM leads GROUP BY stage"
-    ).fetchall()
+
+    # Check if the main leads table has data (real leads from Google Sheets)
+    real_count = conn.execute("SELECT COUNT(*) FROM leads").fetchone()[0]
+
+    if real_count > 0:
+        # Use the real leads table
+        leads = conn.execute(
+            "SELECT company, email, phone, website, category, social_lead_score, "
+            "facebook_url, twitter_url, gmb_url, keyword, facebook_followers, "
+            "twitter_followers, created_at FROM leads ORDER BY "
+            "CASE social_lead_score WHEN 'HOT' THEN 1 WHEN 'Great' THEN 2 "
+            "WHEN 'Good' THEN 3 WHEN 'Poor' THEN 4 ELSE 5 END, "
+            "facebook_followers DESC"
+        ).fetchall()
+        score_counts = conn.execute(
+            "SELECT social_lead_score as score, COUNT(*) as cnt FROM leads "
+            "WHERE social_lead_score IN ('HOT','Great','Good','Poor') "
+            "GROUP BY social_lead_score ORDER BY cnt DESC"
+        ).fetchall()
+        category_counts = conn.execute(
+            "SELECT category, COUNT(*) as cnt FROM leads "
+            "WHERE category IS NOT NULL AND category != '' "
+            "GROUP BY category ORDER BY cnt DESC LIMIT 10"
+        ).fetchall()
+    else:
+        # Fallback to dashboard leads table
+        leads = conn.execute(
+            "SELECT * FROM leads ORDER BY score DESC, created_at DESC"
+        ).fetchall()
+        score_counts = []
+        category_counts = []
+
     conn.close()
 
     if not leads:
@@ -312,17 +340,57 @@ def render_lead_pipeline():
         return
 
     df = pd.DataFrame([dict(l) for l in leads])
-    c1, c2 = st.columns([1, 2])
-    with c1:
-        if stage_counts:
-            sdf = pd.DataFrame([dict(s) for s in stage_counts])
-            fig = px.funnel(sdf, x='count', y='stage', title="Lead Funnel")
-            fig.update_layout(height=300)
-            st.plotly_chart(fig, use_container_width=True)
 
-    with c2:
-        cols = [c for c in ['name', 'company', 'stage', 'score', 'source', 'created_at'] if c in df.columns]
-        st.dataframe(df[cols], use_container_width=True, height=300)
+    # KPI row
+    total = len(df)
+    hot = len(df[df.get('social_lead_score', pd.Series()) == 'HOT']) if 'social_lead_score' in df.columns else 0
+    great = len(df[df.get('social_lead_score', pd.Series()) == 'Great']) if 'social_lead_score' in df.columns else 0
+    with_email = len(df[df.get('email', pd.Series()).notna() & (df.get('email', pd.Series()) != '')]) if 'email' in df.columns else 0
+
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total Leads", total)
+    c2.metric("HOT Leads", hot)
+    c3.metric("Great Leads", great)
+    c4.metric("With Email", with_email)
+    st.divider()
+
+    # Score distribution
+    if score_counts:
+        st.subheader("Lead Score Distribution")
+        sdf = pd.DataFrame([dict(s) for s in score_counts])
+        fig = px.bar(sdf, x='score', y='cnt', color='score',
+                     color_discrete_map={'HOT':'#ef4444','Great':'#f97316','Good':'#eab308','Poor':'#9ca3af'},
+                     title="Leads by Score")
+        fig.update_layout(height=250)
+        st.plotly_chart(fig, use_container_width=True)
+
+    # Category distribution
+    if category_counts:
+        st.subheader("Top Categories")
+        cdf = pd.DataFrame([dict(c) for c in category_counts])
+        fig2 = px.pie(cdf, names='category', values='cnt', title="Leads by Category")
+        fig2.update_layout(height=250)
+        st.plotly_chart(fig2, use_container_width=True)
+
+    # Filters
+    st.subheader("Lead Database")
+    col1, col2 = st.columns(2)
+    with col1:
+        score_filter = st.multiselect("Filter by Score", ["HOT", "Great", "Good", "Poor"], default=[])
+    with col2:
+        search = st.text_input("Search company/email/keyword")
+
+    filtered = df
+    if score_filter and 'social_lead_score' in filtered.columns:
+        filtered = filtered[filtered['social_lead_score'].isin(score_filter)]
+    if search:
+        mask = filtered.apply(lambda row: search.lower() in str(row).lower(), axis=1)
+        filtered = filtered[mask]
+
+    display_cols = [c for c in ['company', 'email', 'phone', 'category', 'social_lead_score',
+                                  'facebook_followers', 'twitter_followers', 'website', 'keyword']
+                    if c in filtered.columns]
+    st.dataframe(filtered[display_cols], use_container_width=True, height=400)
     st.divider()
 
 
