@@ -123,12 +123,13 @@ def post_to_all_platforms(post_set: dict = None, schedule_hours: float = 0.25) -
     except Exception as e:
         results["twitter"] = {"error": str(e)}
 
-    # Instagram
+    # Instagram (requires media URL — use branded image)
     try:
         results["instagram"] = create_post(
             caption=adapt_for_platform(post_set["instagram"], "instagram"),
             social_profile_ids=[INSTAGRAM_PROFILE_ID],
-            scheduled_at=scheduled_at
+            scheduled_at=scheduled_at,
+            media_urls=["https://phanindraintelligenzit-afk.github.io/AgentsFactory/landing/instagram-post.png"],
         )
     except Exception as e:
         results["instagram"] = {"error": str(e)}
