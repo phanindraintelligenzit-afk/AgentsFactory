@@ -260,14 +260,15 @@
 
 ---
 
-## Key Decisions Needed from Phani
+## Key Decisions (LOCKED)
 
-1. **Services & Pricing** — Do the tiers above match what you want to sell?
-2. **Target market** — India-first? US-first? Both?
-3. **Content voice** — Technical/deep? Casual/business? Educational?
-4. **Outreach comfort** — How aggressive? (20/day is conservative, 100/day is aggressive)
-5. **First client strategy** — Do you have any warm contacts who'd be an early customer?
-6. **Brand name** — "AgentsFactory" locked in, or still open to change?
+1. **Pricing tiers** — Confirmed. 3 tiers: Starter ($500-1K), Growth ($1-3K), Scale ($3-5K)
+2. **Early-bird discount** — 25% off for first 10 clients (lifetime lock)
+3. **Target market** — Both India + US
+4. **Content voice** — Infotainment (educational + entertaining)
+5. **Outreach volume** — Aggressive (100/day)
+6. **First client strategy** — Organic (no warm contacts, build in public)
+7. **Brand name** — AgentsFactory ✅ locked
 
 ---
 
