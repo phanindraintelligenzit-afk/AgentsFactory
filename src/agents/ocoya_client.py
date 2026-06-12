@@ -9,7 +9,7 @@ from datetime import datetime, timezone, timedelta
 from typing import Optional
 
 API_KEY = "1e1ed3a3-a319-4340-975d-6e9a901846a0"
-BASE_URL = "https://app.ocoya.com/api/_public/v1"
+BASE_URL = "https://www.app.ocoya.com/api/_public/v1"
 WORKSPACE_ID = "clapmus480dwb5vzyghnv5dku"
 
 # Social Profile IDs
@@ -157,6 +157,26 @@ def post_to_all(caption: str, scheduled_at: str = None, media_urls: list[str] = 
     return create_post(
         caption=caption,
         social_profile_ids=[LINKEDIN_PROFILE_ID, TWITTER_PROFILE_ID, INSTAGRAM_PROFILE_ID, FACEBOOK_PROFILE_ID],
+        scheduled_at=scheduled_at,
+        media_urls=media_urls,
+    )
+
+
+def post_to_instagram(caption: str, scheduled_at: str = None, media_urls: list[str] = None) -> dict:
+    """Post to Instagram."""
+    return create_post(
+        caption=caption,
+        social_profile_ids=[INSTAGRAM_PROFILE_ID],
+        scheduled_at=scheduled_at,
+        media_urls=media_urls,
+    )
+
+
+def post_to_facebook(caption: str, scheduled_at: str = None, media_urls: list[str] = None) -> dict:
+    """Post to Facebook."""
+    return create_post(
+        caption=caption,
+        social_profile_ids=[FACEBOOK_PROFILE_ID],
         scheduled_at=scheduled_at,
         media_urls=media_urls,
     )
