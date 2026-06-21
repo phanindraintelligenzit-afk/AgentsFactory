@@ -1,382 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgentsFactory — AI Automation Agency</title>
-    <style>
-        :root {
-            --bg: #0a0a0f;
-            --surface: #12121a;
-            --surface2: #1a1a2e;
-            --primary: #6c63ff;
-            --primary-glow: #6c63ff40;
-            --accent: #00d4aa;
-            --text: #e4e4e7;
-            --text-muted: #8b8b9e;
-            --border: #2a2a3e;
-            --gradient: linear-gradient(135deg, #6c63ff 0%, #00d4aa 100%);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compliance Monitor — EU AI Act Compliance for AI Startups</title>
+<meta name="description" content="Log every AI agent decision. Auto-generate compliance reports. Flag anomalies in real time. From 2 hours, not 2 months. Start your 14-day free trial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #111118;
+  --bg-card-hover: #1a1a24;
+  --text: #e4e4e7;
+  --text-muted: #9ca3af;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --accent: #06b6d4;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #22c55e;
+  --border: #27272a;
+  --radius: 12px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+.nav .container { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-weight: 800; font-size: 18px; color: var(--text); }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-cta { background: var(--primary); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; }
+.nav-cta:hover { background: var(--primary-hover); text-decoration: none; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+/* Hero */
+.hero { padding: 80px 0 60px; text-align: center; }
+.hero h1 { font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero h2 { font-size: 20px; color: var(--text-muted); font-weight: 400; max-width: 640px; margin: 0 auto 40px; }
+.hero-ctas { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; }
+.btn-primary { background: var(--primary); color: #fff; padding: 14px 32px; border-radius: var(--radius); font-weight: 700; font-size: 16px; display: inline-block; }
+.btn-primary:hover { background: var(--primary-hover); text-decoration: none; }
+.btn-secondary { background: transparent; color: var(--text); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; font-size: 16px; border: 1px solid var(--border); display: inline-block; }
+.btn-secondary:hover { background: var(--bg-card); text-decoration: none; }
+.urgency { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 12px 24px; font-size: 14px; color: #fca5a5; display: inline-block; margin-bottom: 40px; }
+.hero-visual { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; max-width: 900px; margin: 0 auto; text-align: left; }
+.hero-visual-header { display: flex; gap: 8px; margin-bottom: 16px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #22c55e; }
+.log-stream { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 2; }
+.log-row { display: flex; gap: 16px; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.log-time { color: #6b7280; min-width: 80px; }
+.log-agent { color: var(--accent); min-width: 140px; }
+.log-action { color: var(--text-muted); min-width: 100px; }
+.log-risk { font-weight: 600; }
+.risk-low { color: var(--success); }
+.risk-med { color: var(--warning); }
+.risk-high { color: var(--danger); }
+.trust-line { text-align: center; margin-top: 32px; font-size: 13px; color: var(--text-muted); }
+.trust-line strong { color: var(--text); }
 
-        /* ── Nav ── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        .logo { font-size: 1.4rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--text); }
-        .btn {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.9rem;
-            font-weight: 600; text-decoration: none; cursor: pointer;
-            border: none; transition: all 0.2s;
-        }
-        .btn-primary { background: var(--gradient); color: #fff; }
-        .btn-primary:hover { box-shadow: 0 0 30px var(--primary-glow); transform: translateY(-1px); }
-        .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-        .btn-outline:hover { border-color: var(--primary); }
+/* Sections */
+.section { padding: 80px 0; }
+.section-alt { background: rgba(255,255,255,0.02); }
+.section-title { font-size: 36px; font-weight: 800; text-align: center; margin-bottom: 16px; }
+.section-subtitle { font-size: 18px; color: var(--text-muted); text-align: center; max-width: 600px; margin: 0 auto 48px; }
 
-        /* ── Hero ── */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 6rem 2rem 4rem;
-            position: relative;
-        }
-        .hero::before {
-            content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
-            width: 800px; height: 800px; border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-content { position: relative; z-index: 1; max-width: 800px; }
-        .badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem;
-            background: var(--surface2); border: 1px solid var(--border);
-            color: var(--accent); margin-bottom: 2rem;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
-            line-height: 1.1; margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #a0a0c0 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; }
-        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+/* Problem Cards */
+.cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+.card-icon { font-size: 32px; margin-bottom: 16px; }
+.card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.card p { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; }
+.card-stat { font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 6px; display: inline-block; }
+.stat-danger { background: rgba(239,68,68,0.15); color: #fca5a5; }
+.stat-warning { background: rgba(245,158,11,0.15); color: #fcd34d; }
+.stat-info { background: rgba(59,130,246,0.15); color: #93c5fd; }
 
-        /* ── Stats ── */
-        .stats {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem; padding: 3rem 2rem; max-width: 1000px; margin: 0 auto;
-        }
-        .stat-card {
-            text-align: center; padding: 2rem; border-radius: 16px;
-            background: var(--surface); border: 1px solid var(--border);
-        }
-        .stat-number { font-size: 2.5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
+/* Features */
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 64px; }
+.feature-reverse { direction: rtl; }
+.feature-reverse > * { direction: ltr; }
+.feature h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+.feature p { color: var(--text-muted); margin-bottom: 16px; }
+.feature ul { list-style: none; }
+.feature ul li { padding: 6px 0; font-size: 14px; color: var(--text-muted); }
+.feature ul li::before { content: "✓ "; color: var(--success); font-weight: 700; }
+.feature-code { background: #1e1e2e; border-radius: 8px; padding: 16px; font-family: 'SF Mono', monospace; font-size: 13px; color: #a6e3a1; border: 1px solid var(--border); }
 
-        /* ── Section ── */
-        section { padding: 6rem 2rem; }
-        .section-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-        .section-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
-        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+/* How It Works */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+.step-number { width: 48px; height: 48px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; margin: 0 auto 16px; }
+.step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.step p { color: var(--text-muted); font-size: 14px; }
+.step-time { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 8px; }
 
-        /* ── How It Works ── */
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        .step {
-            padding: 2rem; border-radius: 16px;
-            background: var(--surface); border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-        .step:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(108, 99, 255, 0.1); }
-        .step-number { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; background: var(--gradient); margin-bottom: 1.2rem; }
-        .step h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
-        .step p { color: var(--text-muted); font-size: 0.95rem; }
+/* Pricing */
+.pricing-toggle { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; }
+.pricing-toggle button { padding: 8px 20px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-weight: 600; }
+.pricing-toggle button.active { background: var(--bg-card); color: var(--text); border-color: var(--primary); }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.pricing-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 24px; text-align: center; position: relative; }
+.pricing-card.popular { border-color: var(--primary); transform: scale(1.05); }
+.popular-badge { background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); }
+.pricing-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.pricing-card .price { font-size: 36px; font-weight: 800; margin: 16px 0; }
+.pricing-card .price span { font-size: 14px; color: var(--text-muted); font-weight: 400; }
+.pricing-card ul { list-style: none; text-align: left; margin: 24px 0; }
+.pricing-card ul li { padding: 6px 0; font-size: 13px; color: var(--text-muted); }
+.pricing-card ul li::before { content: "✓ "; color: var(--success); }
+.pricing-card .btn-primary { width: 100%; text-align: center; }
+.pricing-note { text-align: center; margin-top: 32px; font-size: 13px; color: var(--text-muted); }
 
-        /* ── Pipelines ── */
-        .pipelines { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
-        .pipeline-card {
-            padding: 1.8rem; border-radius: 16px;
-            background: var(--surface); border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-        .pipeline-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-        .pipeline-icon { font-size: 2rem; margin-bottom: 1rem; }
-        .pipeline-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .pipeline-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-        .pipeline-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tag { padding: 0.2rem 0.7rem; border-radius: 50px; font-size: 0.75rem; background: var(--surface2); color: var(--accent); border: 1px solid var(--border); }
+/* FAQ */
+.faq { max-width: 720px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-item summary { font-weight: 600; cursor: pointer; font-size: 16px; }
+.faq-item p { color: var(--text-muted); margin-top: 12px; font-size: 14px; }
 
-        /* ── Demo ── */
-        .demo-section { background: var(--surface); }
-        .demo-box {
-            max-width: 800px; margin: 0 auto; border-radius: 16px;
-            background: var(--bg); border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .demo-header { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; background: var(--surface2); border-bottom: 1px solid var(--border); }
-        .demo-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .demo-dot.red { background: #ff5f56; }
-        .demo-dot.yellow { background: #ffbd2e; }
-        .demo-dot.green { background: #27c93f; }
-        .demo-body { padding: 1.5rem; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); max-height: 400px; overflow-y: auto; }
-        .demo-body .prompt { color: var(--accent); }
-        .demo-body .output { color: var(--text); }
-        .demo-body .comment { color: #555; }
+/* Final CTA */
+.final-cta { text-align: center; padding: 80px 0; }
+.final-cta h2 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+.final-cta p { color: var(--text-muted); margin-bottom: 32px; }
 
-        /* ── CTA ── */
-        .cta-section { text-align: center; padding: 8rem 2rem; position: relative; }
-        .cta-section::before {
-            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 600px; height: 600px; border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .cta-content { position: relative; z-index: 1; }
-        .cta-section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
-        .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+/* Footer */
+.footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; font-size: 13px; color: var(--text-muted); }
 
-        /* ── Footer ── */
-        footer { padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
-        footer a { color: var(--primary); text-decoration: none; }
-
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.2rem; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        /* ── Animations ── */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate { animation: fadeInUp 0.6s ease-out forwards; }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-    </style>
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  .cards-3, .steps, .pricing-grid { grid-template-columns: 1fr; }
+  .feature { grid-template-columns: 1fr; }
+  .pricing-card.popular { transform: none; }
+  .nav-links { display: none; }
+}
+</style>
 </head>
 <body>
 
 <!-- Nav -->
-<nav>
-    <div class="logo">⚡ AgentsFactory</div>
+<nav class="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">Compliance<span>Monitor</span></a>
     <div class="nav-links">
-        <a href="#how">How It Works</a>
-        <a href="#pipelines">Pipelines</a>
-        <a href="#demo">Demo</a>
-        <a href="https://github.com/phanindraintelligenzit-afk/AgentsFactory" target="_blank">GitHub</a>
-        <a href="#cta" class="btn btn-primary">Get Started</a>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
+    <a href="#pricing" class="nav-cta">Start Free Trial</a>
+  </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
-    <div class="hero-content">
-        <div class="badge">🚀 AI Automation Agency Platform</div>
-        <h1>Build AI Agent Workflows<br>That <span>Actually Do Work</span></h1>
-        <p>Stop building LLM plumbing from scratch. AgentsFactory gives you production-ready agent pipelines — sequential, parallel, routing, loop — in minutes. Focus on your client's problem, not the infrastructure.</p>
-        <div class="hero-buttons">
-            <a href="#demo" class="btn btn-primary">See Live Demo →</a>
-            <a href="https://github.com/phanindraintelligenzit-afk/AgentsFactory" target="_blank" class="btn btn-outline">⭐ Star on GitHub</a>
-        </div>
+  <div class="container">
+    <h1>EU AI Act Compliance for AI Startups —<br>Ship with Confidence Before August 2026</h1>
+    <h2>Log every AI agent decision. Auto-generate compliance reports. Flag anomalies in real time. From 2 hours, not 2 months.</h2>
+    <div class="hero-ctas">
+      <a href="#pricing" class="btn-primary">Start 14-Day Free Trial</a>
+      <a href="#how-it-works" class="btn-secondary">See How It Works</a>
     </div>
+    <div class="urgency">⚠️ EU AI Act high-risk obligations enforceable August 2, 2026 — Penalties up to €15M or 3% of global turnover</div>
+    <div class="hero-visual">
+      <div class="hero-visual-header">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div class="log-stream">
+        <div class="log-row"><span class="log-time">17:35:48</span><span class="log-agent">support-bot-v2</span><span class="log-action">generate_text</span><span class="log-risk risk-low">risk: 12</span></div>
+        <div class="log-row"><span class="log-time">17:35:49</span><span class="log-agent">classifier-v1</span><span class="log-action">classify</span><span class="log-risk risk-med">risk: 45</span></div>
+        <div class="log-row"><span class="log-time">17:35:50</span><span class="log-agent">approval-engine</span><span class="log-action">approve</span><span class="log-risk risk-high">risk: 78 ⚠️</span></div>
+        <div class="log-row"><span class="log-time">17:35:51</span><span class="log-agent">data-pipeline</span><span class="log-action">data_access</span><span class="log-risk risk-low">risk: 8</span></div>
+        <div class="log-row"><span class="log-time">17:35:52</span><span class="log-agent">summarizer-v3</span><span class="log-action">summarize</span><span class="log-risk risk-med">risk: 35</span></div>
+      </div>
+    </div>
+    <div class="trust-line">Built by the team behind <strong>AgentsFactory</strong> · SOC 2 Type II Ready · GDPR Compliant · EU AI Act Ready</div>
+  </div>
 </section>
 
-<!-- Stats -->
-<div class="stats">
-    <div class="stat-card animate delay-1">
-        <div class="stat-number">5</div>
-        <div class="stat-label">Pipeline Templates</div>
+<!-- Problem -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">If You're Building AI in Europe, You Have a Deadline.</h2>
+    <p class="section-subtitle">The EU AI Act's high-risk obligations become enforceable August 2, 2026. Here's what's keeping AI founders up at night.</p>
+    <div class="cards-3">
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>€15M Fines Are Not a Typo</h3>
+        <p>Non-compliance with EU AI Act high-risk obligations carries penalties of up to €15 million or 3% of global annual turnover — whichever is higher. For Series A–C startups, even the lower end is an existential threat.</p>
+        <span class="card-stat stat-danger">August 2, 2026 — High-risk obligations enforceable</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Spreadsheets Won't Survive an Audit</h3>
+        <p>Article 12 requires tamper-evident, structured logs of every AI decision — input, model version, output, and human review. Most startups are tracking this in Slack threads, Notion docs, or not at all.</p>
+        <span class="card-stat stat-warning">15 compliance rules evaluated per decision in real time</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>Enterprise Tools Aren't Built for You</h3>
+        <p>Credo AI, Holistic AI, ModelOp — they're built for Fortune 500 companies with $50K+ annual compliance budgets and 6-month sales cycles. As a startup, you need something you can install today.</p>
+        <span class="card-stat stat-info">Competitors: $50K+/yr · Our Starter: $499/mo</span>
+      </div>
     </div>
-    <div class="stat-card animate delay-2">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Agents Per Pipeline</div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section class="section" id="features">
+  <div class="container">
+    <h2 class="section-title">Real-Time AI Decision Logging.<br>Auto-Generated Compliance Reports.<br>Anomaly Detection That Actually Works.</h2>
+    <p class="section-subtitle">The only compliance platform built for AI-first startups. Install the SDK, and we handle the rest.</p>
+
+    <div class="feature">
+      <div>
+        <h3>Real-Time Agent Decision Logging</h3>
+        <p>Every decision your AI agents make — classified, logged, and tamper-evident. Full provenance: input hash → model version → output → human review. Directly satisfies EU AI Act Article 12.</p>
+        <ul>
+          <li>UUID-based immutable event IDs with hash chain integrity</li>
+          <li>PII detection on both input and output (GDPR Art. 32)</li>
+          <li>Data lineage tracking — every source accessed, every record affected</li>
+          <li>Consent flag verification per decision (GDPR Art. 6/9)</li>
+          <li>15 automated compliance rules evaluated per event</li>
+        </ul>
+      </div>
+      <div class="feature-code">
+        <span style="color:#f38ba8">from</span> compliance_monitor <span style="color:#f38ba8">import</span> ComplianceLogger<br><br>
+        logger = ComplianceLogger(<br>
+        &nbsp;&nbsp;api_key=<span style="color:#a6e3a1">"your-key"</span><br>
+        )<br><br>
+        <span style="color:#64748b"># That's it. Every decision is now logged.</span>
+      </div>
     </div>
-    <div class="stat-card animate delay-3">
-        <div class="stat-number">70</div>
-        <div class="stat-label">Tests Passing</div>
+
+    <div class="feature feature-reverse">
+      <div>
+        <h3>Auto-Generated Compliance Reports</h3>
+        <p>Generate audit-ready compliance reports in one click. Map your AI systems to EU AI Act Articles 12, 13, 14, and 15. Export PDF reports your legal team (and regulators) will actually understand.</p>
+        <ul>
+          <li>EU AI Act article mapping (Art. 12, 13, 14, 15)</li>
+          <li>Risk summary dashboards with trend analysis</li>
+          <li>Anomaly timeline with drill-down capability</li>
+          <li>One-click PDF export, audit-ready formatting</li>
+          <li>Weekly automated reports on Growth tier and above</li>
+        </ul>
+      </div>
+      <div class="feature-code">
+        <span style="color:#64748b"># Generate a compliance report</span><br>
+        report = logger.generate_report(<br>
+        &nbsp;&nbsp;type=<span style="color:#a6e3a1">"daily"</span>,<br>
+        &nbsp;&nbsp;format=<span style="color:#a6e3a1">"pdf"</span><br>
+        )<br>
+        report.export(<span style="color:#a6e3a1">"compliance_report.pdf"</span>)
+      </div>
     </div>
-    <div class="stat-card animate delay-4">
-        <div class="stat-number">$0</div>
-        <div class="stat-label">To Start (Free Models)</div>
+
+    <div class="feature">
+      <div>
+        <h3>Anomaly Detection & Human Oversight</h3>
+        <p>ML-based anomaly detection flags decisions that fall outside expected parameters — low confidence scores, off-policy actions, unauthorized data access, PII leakage. Route alerts to Slack, PagerDuty, or email.</p>
+        <ul>
+          <li>Real-time anomaly detection (15 rule types)</li>
+          <li>Confidence score threshold alerts (configurable)</li>
+          <li>PII leakage detection and auto-blocking</li>
+          <li>Human review workflow with approval chains</li>
+          <li>Slack, PagerDuty, email, and webhook notifications</li>
+        </ul>
+      </div>
+      <div class="feature-code">
+        <span style="color:#64748b"># Anomaly alert → Slack</span><br>
+        {<br>
+        &nbsp;&nbsp;<span style="color:#a6e3a1">"rule"</span>: <span style="color:#a6e3a1">"RULE-001"</span>,<br>
+        &nbsp;&nbsp;<span style="color:#a6e3a1">"severity"</span>: <span style="color:#a6e3a1">"critical"</span>,<br>
+        &nbsp;&nbsp;<span style="color:#a6e3a1">"message"</span>: <span style="color:#a6e3a1">"PII leakage detected"</span>,<br>
+        &nbsp;&nbsp;<span style="color:#a6e3a1">"action"</span>: <span style="color:#a6e3a1">"auto_blocked"</span><br>
+        }
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
 <!-- How It Works -->
-<section id="how">
-    <div class="section-header">
-        <h2>How It Works</h2>
-        <p>From raw client input to complete deliverable in 4 steps</p>
-    </div>
+<section class="section section-alt" id="how-it-works">
+  <div class="container">
+    <h2 class="section-title">EU AI Act Compliance in 2 Hours, Not 2 Months</h2>
+    <p class="section-subtitle">Three steps from installation to your first compliance report.</p>
     <div class="steps">
-        <div class="step animate delay-1">
-            <div class="step-number">1</div>
-            <h3>📥 Client Input</h3>
-            <p>Drop in raw client information — an email, a form, a call transcript. The intake agent extracts and structures everything automatically.</p>
-        </div>
-        <div class="step animate delay-2">
-            <div class="step-number">2</div>
-            <h3>🔍 Research & Analyze</h3>
-            <p>The research agent analyzes the industry, competitors, and opportunities. Know your client's business before the first meeting.</p>
-        </div>
-        <div class="step animate delay-3">
-            <div class="step-number">3</div>
-            <h3>📝 Generate Deliverables</h3>
-            <p>The writer agent produces project briefs, proposals, scope documents, and pricing — tailored to the client's specific needs.</p>
-        </div>
-        <div class="step animate delay-4">
-            <div class="step-number">4</div>
-            <h3>📬 Outreach & Kickoff</h3>
-            <p>The outreach agent drafts welcome emails, meeting agendas, and internal checklists. Your client is onboarded before you finish your coffee.</p>
-        </div>
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Install the SDK</h3>
+        <p>Add our SDK to your AI agent codebase. Python, JavaScript, and Ruby available. One line to initialize, zero config to start logging.</p>
+        <div class="step-time">⏱ 5 minutes</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Decisions Logged Automatically</h3>
+        <p>Every AI agent decision is captured in real time: input, model version, output, data lineage, consent flags, and risk scores. 15 compliance rules evaluated per event.</p>
+        <div class="step-time">⏱ Automatic — starts immediately</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Compliance Reports Generated</h3>
+        <p>Generate audit-ready compliance reports with one click. Map your systems to EU AI Act articles, review anomaly trends, and export PDF reports.</p>
+        <div class="step-time">⏱ First report in under 2 hours</div>
+      </div>
     </div>
+    <div style="text-align:center;margin-top:48px;">
+      <a href="#pricing" class="btn-primary">Ready to get compliant? Start your free trial →</a>
+    </div>
+  </div>
 </section>
 
-<!-- Pipelines -->
-<section id="pipelines">
-    <div class="section-header">
-        <h2>Pipeline Templates</h2>
-        <p>Pre-built for the industries that need AI automation most</p>
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="container">
+    <h2 class="section-title">Startup-Friendly Pricing.<br>No Enterprise Sales Calls Required.</h2>
+    <p class="section-subtitle">From $499/mo. 14-day free trial on all tiers. No credit card required. Annual billing saves 20%.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <p style="font-size:13px;color:var(--text-muted);">Best for early-stage</p>
+        <div class="price">$499<span>/mo</span></div>
+        <ul>
+          <li>Up to 3 AI agents</li>
+          <li>100K decision logs/month</li>
+          <li>Basic compliance dashboard</li>
+          <li>Monthly compliance report</li>
+          <li>Email anomaly alerts</li>
+          <li>30-day log retention</li>
+        </ul>
+        <a href="#" class="btn-primary">Start Free Trial</a>
+      </div>
+      <div class="pricing-card popular">
+        <div class="popular-badge">MOST POPULAR</div>
+        <h3>Growth</h3>
+        <p style="font-size:13px;color:var(--text-muted);">Series A–B, 4–15 agents</p>
+        <div class="price">$1,499<span>/mo</span></div>
+        <ul>
+          <li>Up to 15 AI agents</li>
+          <li>1M decision logs/month</li>
+          <li>Full EU AI Act mapping</li>
+          <li>Weekly compliance reports</li>
+          <li>Real-time anomaly detection</li>
+          <li>Human oversight workflow</li>
+          <li>90-day log retention</li>
+          <li>API access</li>
+        </ul>
+        <a href="#" class="btn-primary">Start Free Trial</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Scale</h3>
+        <p style="font-size:13px;color:var(--text-muted);">Series B–C, 16–50 agents</p>
+        <div class="price">$3,999<span>/mo</span></div>
+        <ul>
+          <li>Up to 50 AI agents</li>
+          <li>10M decision logs/month</li>
+          <li>Multi-framework compliance</li>
+          <li>Custom report templates</li>
+          <li>Advanced ML anomaly detection</li>
+          <li>Approval chains</li>
+          <li>1-year log retention</li>
+          <li>SSO, SOC 2 support</li>
+        </ul>
+        <a href="#" class="btn-primary">Start Free Trial</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <p style="font-size:13px;color:var(--text-muted);">Custom deployment</p>
+        <div class="price">Custom</div>
+        <ul>
+          <li>Unlimited agents & logs</li>
+          <li>Custom integrations</li>
+          <li>On-premise deployment</li>
+          <li>Custom compliance frameworks</li>
+          <li>2-year+ log retention</li>
+          <li>SLA guarantees</li>
+          <li>White-label reports</li>
+          <li>Dedicated support team</li>
+        </ul>
+        <a href="#" class="btn-secondary">Contact Sales</a>
+      </div>
     </div>
-    <div class="pipelines">
-        <div class="pipeline-card animate delay-1">
-            <div class="pipeline-icon">🏥</div>
-            <h3>Healthcare Prior Auth</h3>
-            <p>Automate prior authorization workflows — extract patient data, check insurer requirements, flag denial risks, generate submission packages.</p>
-            <div class="pipeline-tags">
-                <span class="tag">4 Agents</span>
-                <span class="tag">HIPAA Ready</span>
-                <span class="tag">EHR Integration</span>
-            </div>
-        </div>
-        <div class="pipeline-card animate delay-2">
-            <div class="pipeline-icon">🏠</div>
-            <h3>Real Estate Lead Gen</h3>
-            <p>Scout markets, qualify leads from expired listings and pre-foreclosures, score prospects, generate outreach campaigns.</p>
-            <div class="pipeline-tags">
-                <span class="tag">4 Agents</span>
-                <span class="tag">Market Analysis</span>
-                <span class="tag">Lead Scoring</span>
-            </div>
-        </div>
-        <div class="pipeline-card animate delay-3">
-            <div class="pipeline-icon">🛒</div>
-            <h3>E-Commerce Operations</h3>
-            <p>Product analysis, competitive research, listing optimization, review management, pricing recommendations.</p>
-            <div class="pipeline-tags">
-                <span class="tag">4 Agents</span>
-                <span class="tag">SEO</span>
-                <span class="tag">Conversion</span>
-            </div>
-        </div>
-        <div class="pipeline-card animate delay-4">
-            <div class="pipeline-icon">⚖️</div>
-            <h3>Legal Contract Review</h3>
-            <p>Parse contracts, identify redlines, assess risk, generate negotiation summaries, ensure compliance.</p>
-            <div class="pipeline-tags">
-                <span class="tag">4 Agents</span>
-                <span class="tag">Risk Matrix</span>
-                <span class="tag">GDPR/SOC2</span>
-            </div>
-        </div>
-        <div class="pipeline-card animate delay-4">
-            <div class="pipeline-icon">👥</div>
-            <h3>HR Operations</h3>
-            <p>Resume screening, candidate scoring, personalized outreach, onboarding package generation, compliance tracking.</p>
-            <div class="pipeline-tags">
-                <span class="tag">4 Agents</span>
-                <span class="tag">Screening</span>
-                <span class="tag">Onboarding</span>
-            </div>
-        </div>
-    </div>
+    <p class="pricing-note">All plans: 14-day free trial · No credit card required · Cancel anytime · Annual billing: 20% discount<br>Startup program: 50% off for 6 months (&lt; $5M funding)</p>
+  </div>
 </section>
 
-<!-- Demo -->
-<section id="demo" class="demo-section">
-    <div class="section-header">
-        <h2>Live Demo</h2>
-        <p>Here's what the Healthcare Prior Auth pipeline produces from a single patient input</p>
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>When do EU AI Act high-risk obligations become enforceable?</summary>
+        <p>August 2, 2026. This is the deadline for high-risk AI systems to comply with Articles 12 (record-keeping), 13 (transparency), and 14 (human oversight). Penalties for non-compliance are up to €15M or 3% of global annual turnover.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does it take to integrate?</summary>
+        <p>Most teams are logging decisions within 5 minutes. Install the SDK, add one line of initialization code, and every agent decision is automatically captured. Your first compliance report is available within 2 hours.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which AI frameworks do you support?</summary>
+        <p>LangChain, CrewAI, AutoGen, OpenAI Agents SDK, and custom agents. Our framework-agnostic SDK wraps any Python or JavaScript agent. If your agent can be decorated, we can log it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where is my data stored? Is it secure?</summary>
+        <p>All audit logs are encrypted at rest and in transit. We're SOC 2 Type II ready and GDPR compliant. Data is stored in EU-based data centers. Enterprise tier offers on-premise deployment for full data control.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if I exceed my monthly log limit?</summary>
+        <p>We'll never silently drop events. You'll receive alerts when you're approaching your limit. Overage is billed at $0.001/log on Starter, $0.0005/log on Growth, and $0.0001/log on Scale. Enterprise has unlimited logs.</p>
+      </details>
     </div>
-    <div class="demo-box">
-        <div class="demo-header">
-            <div class="demo-dot red"></div>
-            <div class="demo-dot yellow"></div>
-            <div class="demo-dot green"></div>
-            <span style="margin-left: auto; font-size: 0.8rem; color: var(--text-muted);">client_onboarding.py — Healthcare Pipeline</span>
-        </div>
-        <div class="demo-body">
-            <span class="comment">#!/usr/bin/env python3</span><br>
-            <span class="comment"># Healthcare Prior Auth Pipeline — Demo Output</span><br><br>
-            <span class="prompt">▶ Agent 1/4: auth_intake...</span><br>
-            <span class="output">{</span><br>
-            <span class="output">  "patient_id": "PT-2026-8847",</span><br>
-            <span class="output">  "procedure_code": "70553",</span><br>
-            <span class="output">  "insurer": "Aetna Better Health",</span><br>
-            <span class="output">  "urgency": "urgent",</span><br>
-            <span class="output">  "required_documents": ["Neurologist referral", "Prior CT results"],</span><br>
-            <span class="output">  "estimated_turnaround_days": 3</span><br>
-            <span class="output">}</span><br><br>
-            <span class="prompt">▶ Agent 2/4: requirement_checker...</span><br>
-            <span class="output">## Aetna Prior Auth Requirements — MRI Brain w/Contrast</span><br>
-            <span class="output">1. Required: Neurologist referral + CT results + clinical notes</span><br>
-            <span class="output">2. Common denials: "Conservative treatment not attempted"</span><br>
-            <span class="output">3. Tip: Use "rule out MS" language for medical necessity</span><br>
-            <span class="output">4. Timeline: Urgent = 3-5 business days</span><br><br>
-            <span class="prompt">▶ Agent 3/4: documentation_generator...</span><br>
-            <span class="output">✅ Prior Auth Package Generated</span><br>
-            <span class="output">  - Completed CMS-1500 form</span><br>
-            <span class="output">  - Clinical justification letter (neurologist)</span><br>
-            <span class="output">  - Supporting documentation checklist</span><br>
-            <span class="output">  - Submission-ready package (HIPAA compliant)</span><br><br>
-            <span class="prompt">▶ Agent 4/4: tracker_setup...</span><br>
-            <span class="output">📋 Tracking: Auth submitted. Follow-up scheduled Day 3.</span><br>
-            <span class="output">   SLA alert: If no response by Day 5, escalate to supervisor.</span><br><br>
-            <span class="comment">══════════════════════════════════════════</span><br>
-            <span class="comment">  PIPELINE COMPLETE — 4/4 agents, 1.2s</span><br>
-            <span class="comment">  Replaces ~4 hours of manual processing</span><br>
-            <span class="comment">══════════════════════════════════════════</span>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- CTA -->
-<section id="cta" class="cta-section">
-    <div class="cta-content">
-        <h2>Ready to Automate?</h2>
-        <p>Start with a free onboarding audit. We'll run your client's data through a pipeline and show you exactly what's possible.</p>
-        <div class="hero-buttons">
-            <a href="https://github.com/phanindraintelligenzit-afk/AgentsFactory" target="_blank" class="btn btn-primary">🚀 Get Started Free</a>
-            <a href="mailto:srinivas.workspoter@gmail.com" class="btn btn-outline">📧 Book a Call</a>
-        </div>
-    </div>
+<!-- Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Don't Wait for a Regulator to Find You First.</h2>
+    <p>August 2, 2026 is coming. Start your free trial today and be compliant in 2 hours.</p>
+    <a href="#" class="btn-primary" style="font-size:18px;padding:18px 40px;">Start 14-Day Free Trial — No Credit Card Required</a>
+  </div>
 </section>
 
 <!-- Footer -->
-<footer>
-    <p>Built with ❤️ by <a href="#">AgentsFactory</a> · MIT License · <a href="https://github.com/phanindraintelligenzit-afk/AgentsFactory" target="_blank">GitHub</a></p>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Compliance Monitor · Built by AgentsFactory · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></p>
+  </div>
 </footer>
 
 </body>
