@@ -394,7 +394,7 @@ def publish_to_marketplace(build: dict, branch: str) -> bool:
 
     code, _, err = run(
         f"git add docs/data/projects.json docs/marketplace.html && "
-        f"git commit -m {shlex.quote(f'marketplace: add {slug}')} && "
+        f'git commit -m "marketplace: add {slug}" && '
         f"git push origin main",
         timeout=30,
     )

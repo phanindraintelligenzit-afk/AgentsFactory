@@ -15,7 +15,7 @@
     "PCI-DSS"
   ],
   "status": "built (not published)",
-  "created_at": "2026-06-25T20:18:13.294745+00:00",
+  "created_at": "2026-06-25T20:20:00.027613+00:00",
   "research": {
     "problem_statement": "Businesses in finance spend significant manual effort on: finance automation - AI-powered multi-agent system for finance workflows. This automation eliminates repetitive tasks, reduces errors, and accelerates turnaround.",
     "target_audience": "Accounting teams, fintech startups, CFO offices",

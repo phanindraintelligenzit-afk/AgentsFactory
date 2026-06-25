@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-25T15:30:00+00:00",
-  "total_projects": 6,
+  "generated_at": "2026-06-26T01:47:38.415129+05:30",
+  "total_projects": 7,
   "projects": [
     {
       "id": "healthcare-prior-auth",
@@ -8,7 +8,11 @@
       "description": "Automate prior authorization workflows — extract patient data, check insurer requirements, flag denial risks, generate submission packages.",
       "category": "healthcare",
       "icon": "🏥",
-      "tags": ["4 Agents", "HIPAA Ready", "EHR Integration"],
+      "tags": [
+        "4 Agents",
+        "HIPAA Ready",
+        "EHR Integration"
+      ],
       "agents": 4,
       "github_url": "https://github.com/phanindraintelligenzit-afk/healthcare-prior-auth",
       "stars": 0,
@@ -23,7 +27,11 @@
       "description": "Scout markets, qualify leads from expired listings and pre-foreclosures, score prospects, generate outreach campaigns.",
       "category": "realestate",
       "icon": "🏠",
-      "tags": ["4 Agents", "Market Analysis", "Lead Scoring"],
+      "tags": [
+        "4 Agents",
+        "Market Analysis",
+        "Lead Scoring"
+      ],
       "agents": 4,
       "github_url": "https://github.com/phanindraintelligenzit-afk/real-estate-lead-gen",
       "stars": 0,
@@ -38,7 +46,11 @@
       "description": "Product analysis, competitive research, listing optimization, review management, pricing recommendations.",
       "category": "ecommerce",
       "icon": "🛒",
-      "tags": ["4 Agents", "SEO", "Conversion"],
+      "tags": [
+        "4 Agents",
+        "SEO",
+        "Conversion"
+      ],
       "agents": 4,
       "github_url": "https://github.com/phanindraintelligenzit-afk/ecommerce-operations",
       "stars": 0,
@@ -53,7 +65,11 @@
       "description": "Parse contracts, identify redlines, assess risk, generate negotiation summaries, ensure compliance.",
       "category": "legal",
       "icon": "⚖️",
-      "tags": ["4 Agents", "Risk Matrix", "GDPR / SOC2"],
+      "tags": [
+        "4 Agents",
+        "Risk Matrix",
+        "GDPR / SOC2"
+      ],
       "agents": 4,
       "github_url": "https://github.com/phanindraintelligenzit-afk/legal-contract-review",
       "stars": 0,
@@ -68,7 +84,11 @@
       "description": "Resume screening, candidate scoring, personalized outreach, onboarding package generation, compliance tracking.",
       "category": "hr",
       "icon": "👥",
-      "tags": ["4 Agents", "Screening", "Onboarding"],
+      "tags": [
+        "4 Agents",
+        "Screening",
+        "Onboarding"
+      ],
       "agents": 4,
       "github_url": "https://github.com/phanindraintelligenzit-afk/hr-operations",
       "stars": 0,
@@ -83,7 +103,12 @@
       "description": "6 AI agents that automate your entire lead generation pipeline — prospecting, contact discovery, outreach drafting, and lead scoring. Wake up to a full pipeline every morning.",
       "category": "marketing",
       "icon": "🎯",
-      "tags": ["6 Agents", "Multi-Channel", "AI Scoring", "Outreach"],
+      "tags": [
+        "6 Agents",
+        "Multi-Channel",
+        "AI Scoring",
+        "Outreach"
+      ],
       "agents": 6,
       "github_url": "https://github.com/phanindraintelligenzit-afk/AIdentify/tree/main/projects/ai-powered-lead-generation-team-multi-agent-system",
       "stars": 0,
@@ -91,6 +116,25 @@
       "language": "Python",
       "monetization": "Free repo + $1K-2K setup",
       "updated_at": "2026-06-25T15:30:00+00:00"
+    },
+    {
+      "id": "what-surprised-you-about-estonia-e-residency-and-r",
+      "name": "finance automation - AI-powered multi-agent system for finan",
+      "description": "Businesses in finance spend significant manual effort on: finance automation - AI-powered multi-agent system for finance",
+      "category": "finance",
+      "icon": "💰",
+      "tags": [
+        "4 Agents",
+        "Reconciliation",
+        "Audit Trail"
+      ],
+      "agents": 4,
+      "github_url": "https://github.com/phanindraintelligenzit-afk/AgentsFactory/tree/feat/auto-what-surprised-you-about-eston/what-surprised-you-about-estonia-e-residency-and-r",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "monetization": "Free repo + $3K-10K setup",
+      "updated_at": "2026-06-26T01:47:38.415129+05:30"
     }
   ]
 }
