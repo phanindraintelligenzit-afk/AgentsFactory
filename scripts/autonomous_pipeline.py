@@ -290,15 +290,19 @@ def push_to_git(build: dict, ok: bool) -> str:
     msg = f"feat(auto): {slug}" + ("" if ok else " (tests failed)")
 
     msg_escaped = msg.replace('"', '\\"')
-    cmds = [
-        "git add -A",
-        f'git commit -m "{msg_escaped}"',
-        f"git checkout -b {branch} 2>/dev/null || git checkout {branch}",
-        f"git push -u origin {branch}",
-    ]
-    code, out, err = run(" && ".join(cmds), timeout=30)
+    # Commit on main first, then create branch and push
+    run("git add -A", timeout=10)
+    run(f'git commit -m "{msg_escaped}"', timeout=10)
+    # Delete local branch if exists (clean start)
+    run(f"git branch -D {branch} 2>/dev/null", timeout=5)
+    code, out, err = run(
+        f"git push origin HEAD:{branch} -f",
+        timeout=20,
+    )
     if code != 0:
-        # If branch already exists on remote, just push
+        # Fallback: push as main and create branch from GitHub
+        run("git push origin main", timeout=20)
+        run(f"git checkout -b {branch} 2>/dev/null", timeout=5)
         code2, _, err2 = run(f"git push origin {branch}", timeout=20)
         if code2 != 0:
             log(f"Push failed: {err2[:200]}")
