@@ -284,7 +284,9 @@ def test_project(build: dict) -> bool:
 def push_to_git(build: dict, ok: bool) -> str:
     log("═══ PHASE 5: PUSH ═══")
     slug = build["slug"]
-    branch = f"feat/auto-{slug}"
+    # Truncate branch name to avoid git ref limits
+    short_slug = slug[:30]
+    branch = f"feat/auto-{short_slug}"
     msg = f"feat(auto): {slug}" + ("" if ok else " (tests failed)")
 
     msg_escaped = msg.replace('"', '\\"')
