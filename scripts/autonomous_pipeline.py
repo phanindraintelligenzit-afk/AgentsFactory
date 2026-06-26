@@ -392,15 +392,23 @@ def publish_to_marketplace(build: dict, branch: str) -> bool:
             MARKETPLACE_HTML.write_text(html, encoding="utf-8")
             log(f"Added '{cat}' filter tab")
 
+    # Switch to main before publishing so the commit lands on main
+    run("git fetch origin main", timeout=15)
+    run("git checkout main", timeout=10)
+    run("git pull origin main", timeout=15)
+    # Copy marketplace files from feature branch working dir
+    run(f"git checkout {branch} -- docs/data/projects.json docs/marketplace.html", timeout=10)
+    run("git add docs/data/projects.json docs/marketplace.html", timeout=10)
     code, _, err = run(
-        f"git add docs/data/projects.json docs/marketplace.html && "
         f'git commit -m "marketplace: add {slug}" && '
         f"git push origin main",
         timeout=30,
     )
     if code != 0:
         log(f"Marketplace push failed: {err[:200]}")
+        run(f"git checkout {branch}", timeout=10)
         return False
+    run(f"git checkout {branch}", timeout=10)
 
     log(f"✅ {slug} published to marketplace")
     return True
