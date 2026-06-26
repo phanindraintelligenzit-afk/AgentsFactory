@@ -1,7 +1,7 @@
 """Core firewall detection engine."""
 import re, time
 from typing import Dict, List, Any
-from .config import FirewallConfig, Severity
+from config import FirewallConfig, Severity
 
 class Firewall:
     def __init__(self, config: FirewallConfig = None):
@@ -30,8 +30,9 @@ class Firewall:
         self.stats["total_scans"] += 1
         violations = []
         if not text or not text.strip():
-            violations.append({"type": "input_validation", "matches": ["empty_input"], "severity": Severity.BLOCK})
-        elif len(text) > self.config.max_input_length:
+            return {"blocked": False, "severity": "log", "violations": [],
+                    "scan_time_ms": 0.0, "input_length": 0, "timestamp": time.time()}
+        if len(text) > self.config.max_input_length:
             violations.append({"type": "input_validation", "matches": ["oversized_input"], "severity": Severity.BLOCK})
         for detector, category in [
             (self.detect_prompt_injection, "prompt_injection"),

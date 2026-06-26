@@ -7,3 +7,5 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./workspace.db"
     class Config:
         env_prefix = "WORKSPACE_"
+
+config = Settings()
