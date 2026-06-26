@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Agent Team Workspace</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --card: #222633; --border: #2e3348;
+    --text: #e4e6f0; --muted: #8b8fa8; --accent: #6c63ff; --accent-light: #8b85ff;
+    --green: #34d399; --orange: #fbbf24; --red: #f87171; --blue: #60a5fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  header h1 { font-size: 20px; font-weight: 600; }
+  header button { background: var(--accent); color: #fff; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+  header button:hover { background: var(--accent-light); }
+  .board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 24px; min-height: calc(100vh - 70px); }
+  .column { background: var(--surface); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; }
+  .column-header { font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; padding: 6px 10px; border-radius: 6px; }
+  .col-backlog .column-header { background: #6c63ff22; color: var(--accent); }
+  .col-in_progress .column-header { background: #60a5fa22; color: var(--blue); }
+  .col-in_review .column-header { background: #fbbf2422; color: var(--orange); }
+  .col-done .column-header { background: #34d39922; color: var(--green); }
+  .tasks { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .task-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; cursor: pointer; transition: border-color 0.2s; }
+  .task-card:hover { border-color: var(--accent); }
+  .task-title { font-weight: 500; font-size: 14px; margin-bottom: 6px; }
+  .task-meta { font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge-human { background: #60a5fa22; color: var(--blue); }
+  .badge-agent { background: #6c63ff22; color: var(--accent); }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; width: 420px; max-width: 90vw; }
+  .modal h2 { margin-bottom: 16px; font-size: 18px; }
+  .modal label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; margin-top: 12px; }
+  .modal input, .modal textarea, .modal select { width: 100%; background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 6px; font-size: 14px; }
+  .modal textarea { resize: vertical; min-height: 60px; }
+  .modal-actions { margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end; }
+  .modal-actions button { padding: 8px 20px; border-radius: 6px; border: none; cursor: pointer; font-size: 14px; }
+  .btn-cancel { background: var(--card); color: var(--text); }
+  .btn-create { background: var(--accent); color: #fff; }
+  .empty-state { color: var(--muted); font-size: 13px; text-align: center; padding: 24px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Multi-Agent Team Workspace</h1>
+  <button onclick="openModal()">+ New Task</button>
+</header>
+<div class="board">
+  <div class="column col-backlog"><div class="column-header">Backlog</div><div class="tasks" id="col-backlog"></div></div>
+  <div class="column col-in_progress"><div class="column-header">In Progress</div><div class="tasks" id="col-in_progress"></div></div>
+  <div class="column col-in_review"><div class="column-header">In Review</div><div class="tasks" id="col-in_review"></div></div>
+  <div class="column col-done"><div class="column-header">Done</div><div class="tasks" id="col-done"></div></div>
+</div>
+<div class="modal-overlay" id="createModal">
+  <div class="modal">
+    <h2>Create Task</h2>
+    <label for="t-title">Title</label>
+    <input type="text" id="t-title" placeholder="Task title..." />
+    <label for="t-desc">Description</label>
+    <textarea id="t-desc" placeholder="Describe the task..."></textarea>
+    <label for="t-type">Assignee Type</label>
+    <select id="t-type"><option value="human">Human</option><option value="agent">AI Agent</option></select>
+    <label for="t-assignee">Assignee ID</label>
+    <input type="text" id="t-assignee" placeholder="e.g. alice or code-reviewer-agent" />
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-create" onclick="createTask()">Create</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <h2 id="detail-title"></h2>
+    <p id="detail-desc" style="color:var(--muted);font-size:14px;"></p>
+    <label>Assignee</label><p id="detail-assignee"></p>
+    <label>Status</label><p id="detail-status"></p>
+    <label>Context</label><p id="detail-context" style="font-size:13px;"></p>
+    <label>Notes</label><p id="detail-notes" style="font-size:13px;"></p>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeDetailModal()">Close</button></div>
+  </div>
+</div>
+<script>
+var API = "/api/v1";
+function fetchTasks() {
+  fetch(API + "/tasks").then(function(r){return r.json();}).then(function(tasks){renderBoard(tasks);});
+}
+function renderBoard(tasks) {
+  var cols = {backlog:[],in_progress:[],in_review:[],done:[]};
+  tasks.forEach(function(t){if(cols[t.status])cols[t.status].push(t);});
+  Object.keys(cols).forEach(function(status){
+    var c = document.getElementById("col-" + status);
+    if(cols[status].length===0){c.innerHTML='<div class="empty-state">No tasks</div>';}
+    else{c.innerHTML=cols[status].map(function(t){return taskCard(t);}).join("");}
+  });
+}
+function taskCard(t) {
+  var badge = '<span class="badge badge-' + t.assignee_type + '">' + t.assignee_type + '</span>';
+  return '<div class="task-card" onclick="showDetail(\'' + t.id + '\')">'
+    +'<div class="task-title">'+esc(t.title)+'</div>'
+    +'<div class="task-meta">'+badge+' <span>'+esc(t.assignee_id)+'</span></div></div>';
+}
+function esc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML;}
+function openModal(){document.getElementById("createModal").classList.add("active");}
+function closeModal(){document.getElementById("createModal").classList.remove("active");}
+function createTask(){
+  var title=document.getElementById("t-title").value.trim();
+  if(!title){alert("Title is required");return;}
+  fetch(API+"/tasks",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({title:title,
+      description:document.getElementById("t-desc").value.trim(),
+      assignee_type:document.getElementById("t-type").value,
+      assignee_id:document.getElementById("t-assignee").value.trim()||"unassigned"})})
+    .then(function(){closeModal();document.getElementById("t-title").value="";
+      document.getElementById("t-desc").value="";document.getElementById("t-assignee").value="";
+      fetchTasks();});
+}
+function showDetail(taskId){
+  fetch(API+"/tasks/"+taskId).then(function(r){return r.json();}).then(function(t){
+    document.getElementById("detail-title").textContent=t.title;
+    document.getElementById("detail-desc").textContent=t.description||"(no description)";
+    document.getElementById("detail-assignee").innerHTML='<span class="badge badge-'+t.assignee_type+'">'+t.assignee_type+'</span> '+esc(t.assignee_id);
+    document.getElementById("detail-status").textContent=t.status;
+    document.getElementById("detail-context").textContent=t.context||"(none)";
+    document.getElementById("detail-notes").textContent=t.notes||"(none)";
+    document.getElementById("detailModal").classList.add("active");
+  });
+}
+function closeDetailModal(){document.getElementById("detailModal").classList.remove("active");}
+document.querySelectorAll(".modal-overlay").forEach(function(el){
+  el.addEventListener("click",function(e){if(e.target===el)el.classList.remove("active");});
+});
+fetchTasks();
+</script>
+</body>
+</html>

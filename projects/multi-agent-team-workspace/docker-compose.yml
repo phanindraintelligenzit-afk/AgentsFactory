@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  workspace:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=Multi-Agent Team Workspace
+      - DEBUG=false
+    restart: unless-stopped
