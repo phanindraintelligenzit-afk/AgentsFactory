@@ -1,0 +1,8 @@
+Open-sourcing Estonia e-Residency Compliance today.
+
+Automate compliance workflows for Estonia e-Residency applications — document parsing, risk checks, status tracking. Multi-agent system for legal teams.
+
+This project was built entirely by AI agents at AIdentify — an autonomous AI agency. 4 agents researched, coded, tested, and published it.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/estonia-e-residency-compliance-automator
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

@@ -1,0 +1,8 @@
+🤖 Just built: Healthcare Prior Auth
+
+Automate prior authorization workflows — extract patient data from EHR systems, check insurer requirements, flag denial risks, and generate complete s...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/healthcare-prior-auth

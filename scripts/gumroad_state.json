@@ -1,0 +1,100 @@
+{
+  "products": {
+    "healthcare-prior-auth": {
+      "id": "tyZk40qHI74koowx2lnAdQ==",
+      "name": "Healthcare Prior Auth",
+      "url": "https://aidentify.gumroad.com/l/flaoft",
+      "published_at": "2026-06-28T18:01:16.134677+00:00"
+    },
+    "real-estate-lead-gen": {
+      "id": "Wj7xT3abKaGpo22gs2W0mA==",
+      "name": "Real Estate Lead Gen",
+      "url": "https://aidentify.gumroad.com/l/shezbi",
+      "published_at": "2026-06-28T18:01:17.550374+00:00"
+    },
+    "ecommerce-product-optimizer": {
+      "id": "hjHqPrj1HnL7gzhxCU0QKw==",
+      "name": "E-Commerce Product Optimizer",
+      "url": "https://aidentify.gumroad.com/l/ydupso",
+      "published_at": "2026-06-28T18:01:19.034242+00:00"
+    },
+    "legal-contract-review": {
+      "id": "M9Vei-r2CIPwZC2NNNjx4g==",
+      "name": "Legal Contract Review",
+      "url": "https://aidentify.gumroad.com/l/ubfkoa",
+      "published_at": "2026-06-28T18:01:20.448282+00:00"
+    },
+    "hr-operations": {
+      "id": "rrf2AQtUP-fpuS0u-YoMBw==",
+      "name": "HR Operations",
+      "url": "https://aidentify.gumroad.com/l/leabtq",
+      "published_at": "2026-06-28T18:01:21.906808+00:00"
+    },
+    "ai-agent-sandbox-governance": {
+      "id": "h72J8N9DbKXBK4NArdHWFw==",
+      "name": "AI Agent Sandbox & Governance",
+      "url": "https://aidentify.gumroad.com/l/lheeb",
+      "published_at": "2026-06-28T18:01:23.397474+00:00"
+    },
+    "estonia-e-residency-compliance-automator": {
+      "id": "FdEZ6HKKog8zD-nRlbWA7g==",
+      "name": "Estonia e-Residency Compliance",
+      "url": "https://aidentify.gumroad.com/l/maihje",
+      "published_at": "2026-06-28T18:01:24.831065+00:00"
+    },
+    "ai-app-store-screenshot-generator": {
+      "id": "8DbRJbpl6dpxLjxS94UfHw==",
+      "name": "AI App Store Screenshot Generator",
+      "url": "https://aidentify.gumroad.com/l/puuomo",
+      "published_at": "2026-06-28T18:01:26.195241+00:00"
+    },
+    "-i-built-an-ai-team-that-finds-leads-decision-make": {
+      "id": "bJWesO-M9K7uw2xcWid6bA==",
+      "name": "AI Team That Finds Leads & Writes Outreach",
+      "url": "https://aidentify.gumroad.com/l/kwwpct",
+      "published_at": "2026-06-28T18:01:27.800869+00:00"
+    },
+    "ai-soc2-compliance-agent": {
+      "id": "erj6XKejwZE1rr1cyIf7-g==",
+      "name": "AI SOC2 Compliance Agent",
+      "url": "https://aidentify.gumroad.com/l/yqfbef",
+      "published_at": "2026-06-30T04:30:30.867423+00:00"
+    },
+    "ai-competitive-intelligence-agent": {
+      "id": "3BPrjqBzJI5NfmWYeI6goA==",
+      "name": "AI Competitive Intelligence Agent",
+      "url": "https://aidentify.gumroad.com/l/vecfp",
+      "published_at": "2026-06-30T04:30:32.371692+00:00"
+    },
+    "ai-invoice-reconciliation-agent": {
+      "id": "0F-QANI9GXMa8fH_YtWUVQ==",
+      "name": "AI Invoice Reconciliation Agent",
+      "url": "https://aidentify.gumroad.com/l/elego",
+      "published_at": "2026-06-30T04:30:34.514076+00:00"
+    },
+    "mcp-server-for-google-ads-meta-ads-ga4": {
+      "id": "9cghJTiJ03nfEVJBDNNmpA==",
+      "name": "MCP Server for Google Ads, Meta Ads & GA4",
+      "url": "https://aidentify.gumroad.com/l/vqkks",
+      "published_at": "2026-06-30T04:30:35.889434+00:00"
+    },
+    "reportgenie-ai": {
+      "id": "O04z4rdoBwFt_LnLz4eT7w==",
+      "name": "ReportGenie AI",
+      "url": "https://aidentify.gumroad.com/l/gyuay",
+      "published_at": "2026-06-30T04:30:37.336016+00:00"
+    },
+    "nanoeuler-gpt-2-scale-model-in-pure-ccuda-from-scr": {
+      "id": "Wtrb7acdc-DNrmKiFkfsEg==",
+      "name": "NanoEuler \u2014 GPT-2 Scale Model in Pure C/CUDA",
+      "url": "https://aidentify.gumroad.com/l/ecvner",
+      "published_at": "2026-06-30T04:30:38.719729+00:00"
+    },
+    "code-shield-sast": {
+      "id": "zR1UEIEt7fDcPDiliVMzkA==",
+      "name": "CodeShield SAST",
+      "url": "https://aidentify.gumroad.com/l/bwgcv",
+      "published_at": "2026-06-30T04:30:40.092382+00:00"
+    }
+  }
+}

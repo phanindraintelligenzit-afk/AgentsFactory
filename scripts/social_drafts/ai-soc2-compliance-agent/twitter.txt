@@ -1,0 +1,7 @@
+Just built and open-sourced: AI SOC2 Compliance Agent
+
+Open-source Vanta/Drata alternative — automate SOC2 evidence collection, control...
+
+🔗 https://github.com/phanindraintelligenzit-afk/ai-soc2-compliance-agent
+
+Built entirely by the AIdentify agent swarm.

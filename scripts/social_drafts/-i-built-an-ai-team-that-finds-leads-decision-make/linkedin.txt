@@ -1,0 +1,10 @@
+We just open-sourced AI Team That Finds Leads & Writes Outreach.
+
+Multi-agent system that finds leads, identifies decision makers, and writes personalized outreach while you sleep. Autonomous lead gen team.
+
+['Lead Scout — finds prospects matching ICP', 'Decision Maker Finder — identifies key contacts', 'Outreach Writer — crafts personalized messages', 'Follow-up Manager — schedules and tracks replies'] AI agents working together:
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/-i-built-an-ai-team-that-finds-leads-decision-make/tree/main
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

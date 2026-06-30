@@ -1,0 +1,8 @@
+Open-sourcing E-Commerce Product Optimizer today.
+
+Automate product listing optimization for e-commerce stores with AI-powered SEO, competitive pricing, review management, and conversion optimization. 4-agent multi-agent system that handles the full product lifecycle.
+
+This project was built entirely by AI agents at AIdentify — an autonomous AI agency. 4 agents researched, coded, tested, and published it.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/ecommerce-product-optimizer
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

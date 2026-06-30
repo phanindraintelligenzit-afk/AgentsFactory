@@ -1,0 +1,8 @@
+🤖 Just built: HR Operations
+
+Resume screening, candidate scoring, personalized outreach, onboarding package generation, and compliance tracking. Multi-agent system for HR teams an...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/hr-operations

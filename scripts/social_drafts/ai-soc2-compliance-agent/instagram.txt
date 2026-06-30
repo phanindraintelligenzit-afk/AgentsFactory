@@ -1,0 +1,8 @@
+🤖 Just built: AI SOC2 Compliance Agent
+
+Open-source Vanta/Drata alternative — automate SOC2 evidence collection, control mapping, and audit preparation. Track Trust Services Criteria control...
+
+Includes 5 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/ai-soc2-compliance-agent

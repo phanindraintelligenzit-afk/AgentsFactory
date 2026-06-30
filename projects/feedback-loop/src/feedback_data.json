@@ -1,0 +1,304 @@
+{
+  "timestamp": "2026-06-29T10:00:48.603364+05:30",
+  "stats": [
+    {
+      "name": "healthcare-prior-auth",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-25T18:20:20Z",
+      "updated_at": "2026-06-25T18:20:28Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "Healthcare Prior Auth",
+      "category": "healthcare",
+      "engagement_score": 0
+    },
+    {
+      "name": "real-estate-lead-gen",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-25T18:20:33Z",
+      "updated_at": "2026-06-25T18:20:41Z",
+      "language": "HTML",
+      "topics": [],
+      "marketplace_name": "Real Estate Lead Gen",
+      "category": "marketing",
+      "engagement_score": 0
+    },
+    {
+      "name": "ecommerce-product-optimizer",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-25T18:20:46Z",
+      "updated_at": "2026-06-25T18:25:18Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "E-Commerce Product Optimizer",
+      "category": "marketing",
+      "engagement_score": 0
+    },
+    {
+      "name": "legal-contract-review",
+      "error": "HTTP Error 404: Not Found",
+      "marketplace_name": "Legal Contract Review",
+      "category": "legal"
+    },
+    {
+      "name": "hr-operations",
+      "error": "HTTP Error 404: Not Found",
+      "marketplace_name": "HR Operations",
+      "category": "productivity"
+    },
+    {
+      "name": "ai-agent-sandbox-governance",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-26T02:33:52Z",
+      "updated_at": "2026-06-26T02:34:11Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "AI Agent Sandbox & Governance",
+      "category": "security",
+      "engagement_score": 0
+    },
+    {
+      "name": "estonia-e-residency-compliance-automator",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-25T19:59:03Z",
+      "updated_at": "2026-06-25T20:04:35Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "Estonia e-Residency Compliance",
+      "category": "legal",
+      "engagement_score": 0
+    },
+    {
+      "name": "ai-app-store-screenshot-generator",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-28T08:54:57Z",
+      "updated_at": "2026-06-28T08:55:05Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "AI App Store Screenshot Generator",
+      "category": "marketing",
+      "engagement_score": 0
+    },
+    {
+      "name": "main",
+      "error": "HTTP Error 404: Not Found",
+      "marketplace_name": "AI Team That Finds Leads & Writes Outreach",
+      "category": "marketing"
+    },
+    {
+      "name": "ai-invoice-reconciliation-agent",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-28T18:58:28Z",
+      "updated_at": "2026-06-28T18:58:35Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "AI Invoice Reconciliation Agent",
+      "category": "finance",
+      "engagement_score": 0
+    },
+    {
+      "name": "mcp-server-for-google-ads-meta-ads-ga4",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "open_issues": 0,
+      "created_at": "2026-06-28T18:58:47Z",
+      "updated_at": "2026-06-28T18:58:54Z",
+      "language": "Python",
+      "topics": [],
+      "marketplace_name": "MCP Server for Google Ads, Meta Ads & GA4",
+      "category": "marketing",
+      "engagement_score": 0
+    },
+    {
+      "name": "reportgenie-ai",
+      "error": "HTTP Error 404: Not Found",
+      "marketplace_name": "ReportGenie AI",
+      "category": "marketing"
+    }
+  ],
+  "analysis": {
+    "total_projects": 12,
+    "successful_fetches": 8,
+    "failed_fetches": 4,
+    "top_performers": [
+      {
+        "name": "healthcare-prior-auth",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-25T18:20:20Z",
+        "updated_at": "2026-06-25T18:20:28Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "Healthcare Prior Auth",
+        "category": "healthcare",
+        "engagement_score": 0
+      },
+      {
+        "name": "real-estate-lead-gen",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-25T18:20:33Z",
+        "updated_at": "2026-06-25T18:20:41Z",
+        "language": "HTML",
+        "topics": [],
+        "marketplace_name": "Real Estate Lead Gen",
+        "category": "marketing",
+        "engagement_score": 0
+      },
+      {
+        "name": "ecommerce-product-optimizer",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-25T18:20:46Z",
+        "updated_at": "2026-06-25T18:25:18Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "E-Commerce Product Optimizer",
+        "category": "marketing",
+        "engagement_score": 0
+      },
+      {
+        "name": "ai-agent-sandbox-governance",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-26T02:33:52Z",
+        "updated_at": "2026-06-26T02:34:11Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "AI Agent Sandbox & Governance",
+        "category": "security",
+        "engagement_score": 0
+      },
+      {
+        "name": "estonia-e-residency-compliance-automator",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-25T19:59:03Z",
+        "updated_at": "2026-06-25T20:04:35Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "Estonia e-Residency Compliance",
+        "category": "legal",
+        "engagement_score": 0
+      }
+    ],
+    "needs_attention": [
+      {
+        "name": "ai-agent-sandbox-governance",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-26T02:33:52Z",
+        "updated_at": "2026-06-26T02:34:11Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "AI Agent Sandbox & Governance",
+        "category": "security",
+        "engagement_score": 0
+      },
+      {
+        "name": "estonia-e-residency-compliance-automator",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-25T19:59:03Z",
+        "updated_at": "2026-06-25T20:04:35Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "Estonia e-Residency Compliance",
+        "category": "legal",
+        "engagement_score": 0
+      },
+      {
+        "name": "ai-app-store-screenshot-generator",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-28T08:54:57Z",
+        "updated_at": "2026-06-28T08:55:05Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "AI App Store Screenshot Generator",
+        "category": "marketing",
+        "engagement_score": 0
+      },
+      {
+        "name": "ai-invoice-reconciliation-agent",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-28T18:58:28Z",
+        "updated_at": "2026-06-28T18:58:35Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "AI Invoice Reconciliation Agent",
+        "category": "finance",
+        "engagement_score": 0
+      },
+      {
+        "name": "mcp-server-for-google-ads-meta-ads-ga4",
+        "stars": 0,
+        "forks": 0,
+        "watchers": 0,
+        "open_issues": 0,
+        "created_at": "2026-06-28T18:58:47Z",
+        "updated_at": "2026-06-28T18:58:54Z",
+        "language": "Python",
+        "topics": [],
+        "marketplace_name": "MCP Server for Google Ads, Meta Ads & GA4",
+        "category": "marketing",
+        "engagement_score": 0
+      }
+    ],
+    "category_breakdown": {
+      "Python": {
+        "count": 7,
+        "total_stars": 0,
+        "total_forks": 0
+      },
+      "HTML": {
+        "count": 1,
+        "total_stars": 0,
+        "total_forks": 0
+      }
+    },
+    "total_stars": 0,
+    "total_forks": 0
+  }
+}

@@ -1,0 +1,7 @@
+Just built and open-sourced: AI Team That Finds Leads & Writes Outreach
+
+Multi-agent system that finds leads, identifies decision makers, and writes pers...
+
+🔗 https://github.com/phanindraintelligenzit-afk/-i-built-an-ai-team-that-finds-leads-decision-make/tree/main
+
+Built entirely by the AIdentify agent swarm.

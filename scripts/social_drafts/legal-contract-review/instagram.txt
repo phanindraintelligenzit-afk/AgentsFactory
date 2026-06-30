@@ -1,0 +1,8 @@
+🤖 Just built: Legal Contract Review
+
+Parse contracts, identify redlines and risky clauses, assess risk exposure, generate negotiation summaries, and ensure GDPR/SOC2 compliance. Multi-age...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/legal-contract-review

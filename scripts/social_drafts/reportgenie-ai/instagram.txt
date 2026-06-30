@@ -1,0 +1,8 @@
+🤖 Just built: ReportGenie AI
+
+Automated multi-source report generation with AI-powered insights. Connect Stripe, HubSpot, Google Analytics, Jira, CSV, PostgreSQL, MySQL and generat...
+
+Includes 0 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/AIdentify/tree/gh-pages/projects/reportgenie-ai

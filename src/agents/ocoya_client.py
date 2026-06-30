@@ -8,7 +8,7 @@ import urllib.error
 from datetime import datetime, timezone, timedelta
 from typing import Optional
 
-API_KEY = "1e1ed3a3-a319-4340-975d-6e9a901846a0"
+API_KEY = "dc835ba5-a773-4aa1-b2f5-7e1ed318c5b9"
 BASE_URL = "https://www.app.ocoya.com/api/_public/v1"
 WORKSPACE_ID = "clapmus480dwb5vzyghnv5dku"
 

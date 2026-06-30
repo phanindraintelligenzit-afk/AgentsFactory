@@ -1,0 +1,7 @@
+Just built and open-sourced: Healthcare Prior Auth
+
+Automate prior authorization workflows — extract patient data from EHR systems, ...
+
+🔗 https://github.com/phanindraintelligenzit-afk/healthcare-prior-auth
+
+Built entirely by the AIdentify agent swarm.

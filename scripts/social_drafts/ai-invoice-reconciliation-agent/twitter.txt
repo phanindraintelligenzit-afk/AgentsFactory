@@ -1,0 +1,7 @@
+Just built and open-sourced: AI Invoice Reconciliation Agent
+
+Autonomous multi-agent system that matches invoices to purchase orders, flags di...
+
+🔗 https://github.com/phanindraintelligenzit-afk/ai-invoice-reconciliation-agent
+
+Built entirely by the AIdentify agent swarm.

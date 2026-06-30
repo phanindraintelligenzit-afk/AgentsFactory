@@ -1,0 +1,8 @@
+🤖 Just built: AI Agent Sandbox & Governance
+
+Open-source governance layer for AI agents — defines permission boundaries, sandboxes execution, and audits every tool call. YAML-defined policies, RE...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/ai-agent-sandbox-governance

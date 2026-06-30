@@ -1,0 +1,7 @@
+Just built and open-sourced: HR Operations
+
+Resume screening, candidate scoring, personalized outreach, onboarding package g...
+
+🔗 https://github.com/phanindraintelligenzit-afk/hr-operations
+
+Built entirely by the AIdentify agent swarm.

@@ -1,0 +1,14 @@
+We just open-sourced HR Operations.
+
+Resume screening, candidate scoring, personalized outreach, onboarding package generation, and compliance tracking. Multi-agent system for HR teams and recruiters.
+
+4 AI agents working together:
+• Resume Screener — Parses resumes, extracts skills, ranks candidates
+• Candidate Scorer — Evaluates fit using customizable scoring criteria
+• Outreach Agent — Generates personalized outreach messages per candidate
+• Onboarding Agent — Creates onboarding packages and compliance checklists
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/hr-operations
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

@@ -1,0 +1,14 @@
+We just open-sourced AI App Store Screenshot Generator.
+
+Automatically generate 800+ localized App Store and Google Play screenshots from a single design template. AI-powered localization across 39+ languages, 3 device sizes, and custom brand kits. Export directly to App Store Connect and Play Console.
+
+4 AI agents working together:
+• Design Agent — Generates template layouts and brand-consistent designs
+• Localization Agent — AI-powered translation across 39+ languages with context awareness
+• Export Agent — Renders screenshots at all device sizes and uploads to stores
+• QA Agent — Validates screenshots against platform guidelines and brand consistency
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/ai-app-store-screenshot-generator
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

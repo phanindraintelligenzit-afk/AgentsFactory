@@ -1,0 +1,8 @@
+🤖 Just built: AI App Store Screenshot Generator
+
+Automatically generate 800+ localized App Store and Google Play screenshots from a single design template. AI-powered localization across 39+ language...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/ai-app-store-screenshot-generator

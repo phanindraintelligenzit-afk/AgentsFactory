@@ -1,0 +1,8 @@
+🤖 Just built: AI Invoice Reconciliation Agent
+
+Autonomous multi-agent system that matches invoices to purchase orders, flags discrepancies, and routes exceptions for approval. Eliminates manual AP ...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/ai-invoice-reconciliation-agent

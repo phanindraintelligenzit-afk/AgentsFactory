@@ -1,0 +1,7 @@
+Just built and open-sourced: ReportGenie AI
+
+Automated multi-source report generation with AI-powered insights. Connect Strip...
+
+🔗 https://github.com/phanindraintelligenzit-afk/AIdentify/tree/gh-pages/projects/reportgenie-ai
+
+Built entirely by the AIdentify agent swarm.

@@ -1,0 +1,15 @@
+We just open-sourced AI SOC2 Compliance Agent.
+
+Open-source Vanta/Drata alternative — automate SOC2 evidence collection, control mapping, and audit preparation. Track Trust Services Criteria controls, collect evidence, manage audits, and maintain security policies.
+
+5 AI agents working together:
+• Control Mapper — Maps SOC2 TSC criteria to your organization controls
+• Evidence Collector — Automated evidence gathering from integrations
+• Audit Manager — Tracks audit progress and manages auditor engagement
+• Policy Generator — Creates and maintains security policies
+• Integration Hub — Connects to AWS, GCP, GitHub, Okta, and 300+ tools
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/ai-soc2-compliance-agent
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

@@ -1,0 +1,164 @@
+[
+  {
+    "project_id": "ecommerce-product-optimizer",
+    "name": "E-Commerce Product Optimizer",
+    "posts": [
+      {
+        "platform": "twitter",
+        "scheduled_at": "2026-06-29T03:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "linkedin",
+        "scheduled_at": "2026-06-29T02:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "facebook",
+        "scheduled_at": "2026-06-29T05:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      }
+    ]
+  },
+  {
+    "project_id": "estonia-e-residency-compliance-automator",
+    "name": "Estonia e-Residency Compliance",
+    "posts": [
+      {
+        "platform": "twitter",
+        "scheduled_at": "2026-06-29T03:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "linkedin",
+        "scheduled_at": "2026-06-29T02:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "facebook",
+        "scheduled_at": "2026-06-29T05:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      }
+    ]
+  },
+  {
+    "project_id": "ai-app-store-screenshot-generator",
+    "name": "AI App Store Screenshot Generator",
+    "posts": [
+      {
+        "platform": "twitter",
+        "scheduled_at": "2026-06-29T03:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "linkedin",
+        "scheduled_at": "2026-06-29T02:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "facebook",
+        "scheduled_at": "2026-06-29T05:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      }
+    ]
+  },
+  {
+    "project_id": "-i-built-an-ai-team-that-finds-leads-decision-make",
+    "name": "AI Team That Finds Leads & Writes Outreach",
+    "posts": [
+      {
+        "platform": "twitter",
+        "scheduled_at": "2026-06-29T03:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "linkedin",
+        "scheduled_at": "2026-06-29T02:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "facebook",
+        "scheduled_at": "2026-06-29T05:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      }
+    ]
+  },
+  {
+    "project_id": "ai-invoice-reconciliation-agent",
+    "name": "AI Invoice Reconciliation Agent",
+    "posts": [
+      {
+        "platform": "twitter",
+        "scheduled_at": "2026-06-29T03:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "linkedin",
+        "scheduled_at": "2026-06-29T02:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "facebook",
+        "scheduled_at": "2026-06-29T05:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      }
+    ]
+  },
+  {
+    "project_id": "mcp-server-for-google-ads-meta-ads-ga4",
+    "name": "MCP Server for Google Ads, Meta Ads & GA4",
+    "posts": [
+      {
+        "platform": "twitter",
+        "scheduled_at": "2026-06-29T03:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "linkedin",
+        "scheduled_at": "2026-06-29T02:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      },
+      {
+        "platform": "facebook",
+        "scheduled_at": "2026-06-29T05:30:00Z",
+        "result": {
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.app.ocaya.com'. (_ssl.c:1016)>"
+        }
+      }
+    ]
+  }
+]

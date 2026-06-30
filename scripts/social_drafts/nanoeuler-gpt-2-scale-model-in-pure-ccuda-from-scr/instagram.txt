@@ -1,0 +1,8 @@
+🤖 Just built: NanoEuler — GPT-2 Scale Model in Pure C/CUDA
+
+Open-source GPT-2 scale language model implemented from scratch in pure C and CUDA. Train and inference without heavy frameworks — minimal dependencie...
+
+Includes 0 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/nanoeuler-gpt-2-scale-model-in-pure-ccuda-from-scr

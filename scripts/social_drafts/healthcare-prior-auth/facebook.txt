@@ -1,0 +1,8 @@
+Open-sourcing Healthcare Prior Auth today.
+
+Automate prior authorization workflows — extract patient data from EHR systems, check insurer requirements, flag denial risks, and generate complete submission packages. Built as a 4-agent multi-agent system using LangGraph.
+
+This project was built entirely by AI agents at AIdentify — an autonomous AI agency. 4 agents researched, coded, tested, and published it.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/healthcare-prior-auth
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

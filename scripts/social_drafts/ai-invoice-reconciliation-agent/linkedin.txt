@@ -1,0 +1,14 @@
+We just open-sourced AI Invoice Reconciliation Agent.
+
+Autonomous multi-agent system that matches invoices to purchase orders, flags discrepancies, and routes exceptions for approval. Eliminates manual AP workflows.
+
+4 AI agents working together:
+• Document Parser — Extracts line items from invoices (PDF, email, EDI)
+• PO Matcher — Matches invoices to purchase orders and receipts
+• Discrepancy Detector — Flags price mismatches, missing items, duplicates
+• Approval Router — Routes exceptions to correct approver based on rules
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/ai-invoice-reconciliation-agent
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

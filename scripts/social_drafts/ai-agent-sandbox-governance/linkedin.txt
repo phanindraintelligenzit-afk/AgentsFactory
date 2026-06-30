@@ -1,0 +1,14 @@
+We just open-sourced AI Agent Sandbox & Governance.
+
+Open-source governance layer for AI agents — defines permission boundaries, sandboxes execution, and audits every tool call. YAML-defined policies, REST API, tamper-proof audit logs.
+
+4 AI agents working together:
+• Policy Engine — Enforce YAML-defined permission policies (filesystem, network, commands)
+• Sandbox Runner — Execute agent actions within defined boundaries
+• Audit Logger — Tamper-proof audit trail with hash chain verification
+• API Server — REST API for CI/CD pipeline integration
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/ai-agent-sandbox-governance
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

@@ -1,0 +1,7 @@
+Just built and open-sourced: Legal Contract Review
+
+Parse contracts, identify redlines and risky clauses, assess risk exposure, gene...
+
+🔗 https://github.com/phanindraintelligenzit-afk/legal-contract-review
+
+Built entirely by the AIdentify agent swarm.

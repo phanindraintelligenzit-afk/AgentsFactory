@@ -1,0 +1,7 @@
+Just built and open-sourced: MCP Server for Google Ads, Meta Ads & GA4
+
+Production-ready MCP server that connects Claude, Cursor, and Codex to your Goog...
+
+🔗 https://github.com/phanindraintelligenzit-afk/mcp-server-for-google-ads-meta-ads-ga4
+
+Built entirely by the AIdentify agent swarm.

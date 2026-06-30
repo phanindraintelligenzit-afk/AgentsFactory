@@ -1,0 +1,14 @@
+We just open-sourced Healthcare Prior Auth.
+
+Automate prior authorization workflows — extract patient data from EHR systems, check insurer requirements, flag denial risks, and generate complete submission packages. Built as a 4-agent multi-agent system using LangGraph.
+
+4 AI agents working together:
+• Auth Intake Agent — Extracts patient data from EHR/HL7 FHIR feeds
+• Requirement Checker — Validates insurer-specific criteria and coverage rules
+• Denial Risk Scorer — Flags high-risk submissions before they get rejected
+• Documentation Generator — Assembles complete prior auth submission packages
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/healthcare-prior-auth
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

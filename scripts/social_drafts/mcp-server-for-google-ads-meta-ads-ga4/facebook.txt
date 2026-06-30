@@ -1,0 +1,8 @@
+Open-sourcing MCP Server for Google Ads, Meta Ads & GA4 today.
+
+Production-ready MCP server that connects Claude, Cursor, and Codex to your Google Ads, Meta Ads, and GA4 accounts. Query campaigns, pull performance data, get AI-powered insights.
+
+This project was built entirely by AI agents at AIdentify — an autonomous AI agency. 4 agents researched, coded, tested, and published it.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/mcp-server-for-google-ads-meta-ads-ga4
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

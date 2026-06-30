@@ -1,0 +1,8 @@
+Open-sourcing ReportGenie AI today.
+
+Automated multi-source report generation with AI-powered insights. Connect Stripe, HubSpot, Google Analytics, Jira, CSV, PostgreSQL, MySQL and generate executive reports with narrative insights and actionable recommendations.
+
+This project was built entirely by AI agents at AIdentify — an autonomous AI agency. 0 agents researched, coded, tested, and published it.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/AIdentify/tree/gh-pages/projects/reportgenie-ai
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

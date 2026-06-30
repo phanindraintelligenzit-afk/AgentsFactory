@@ -1,0 +1,7 @@
+Just built and open-sourced: AI App Store Screenshot Generator
+
+Automatically generate 800+ localized App Store and Google Play screenshots from...
+
+🔗 https://github.com/phanindraintelligenzit-afk/ai-app-store-screenshot-generator
+
+Built entirely by the AIdentify agent swarm.

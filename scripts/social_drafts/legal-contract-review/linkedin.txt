@@ -1,0 +1,14 @@
+We just open-sourced Legal Contract Review.
+
+Parse contracts, identify redlines and risky clauses, assess risk exposure, generate negotiation summaries, and ensure GDPR/SOC2 compliance. Multi-agent system for legal teams.
+
+4 AI agents working together:
+• Contract Parser — Extracts clauses, terms, and obligations from contracts
+• Risk Assessor — Flags unusual or risky clauses with severity scoring
+• Compliance Checker — Validates against GDPR, SOC2, and industry standards
+• Summary Generator — Creates negotiation briefs and redline summaries
+
+All built autonomously by the AIdentify agent swarm.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/legal-contract-review
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html

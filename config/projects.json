@@ -1,0 +1,50 @@
+{
+  "estonia-e-residency-compliance-automator": {
+    "name": "Estonia E Residency Compliance Automator",
+    "category": "legal",
+    "status": "built",
+    "github_url": null,
+    "project_dir": "C:\\Users\\Admin\\Projects\\AgentsFactory\\projects\\estonia-e-residency-compliance-automator",
+    "created_at": "2026-06-25T19:59:00.853099+00:00"
+  },
+  "ai-agent-security-firewall": {
+    "name": "AI Agent Security Firewall",
+    "category": "security",
+    "status": "built",
+    "github_url": "https://github.com/phanindraintigenzit-afk/AgentsFactory/tree/gh-pages/projects/ai-agent-security-firewall",
+    "project_dir": "projects/ai-agent-security-firewall",
+    "created_at": "2026-06-26T12:00:00+00:00"
+  },
+  "multi-agent-team-workspace": {
+    "name": "Multi-Agent Team Workspace",
+    "category": "productivity",
+    "status": "built",
+    "github_url": "https://github.com/phanindraintigenzit-afk/AgentsFactory/tree/gh-pages/projects/multi-agent-team-workspace",
+    "project_dir": "projects/multi-agent-team-workspace",
+    "created_at": "2026-06-26T12:00:00+00:00"
+  },
+  "ai-app-store-screenshot-generator": {
+    "name": "AI App Store Screenshot Generator",
+    "category": "marketing",
+    "status": "built",
+    "github_url": "https://github.com/phanindraintelligenzit-afk/ai-app-store-screenshot-generator",
+    "project_dir": "projects/ai-app-store-screenshot-generator",
+    "created_at": "2026-06-28T14:25:00+00:00"
+  },
+  "dsar-automator": {
+    "name": "DataGuard DSAR Automator",
+    "category": "legal",
+    "status": "built",
+    "github_url": "https://github.com/phanindraintigenzit-afk/AgentsFactory/tree/gh-pages/projects/dsar-automator",
+    "project_dir": "projects/dsar-automator",
+    "created_at": "2026-06-28T10:00:00.000000+00:00"
+  },
+  "vendor-risk-assessment-agent": {
+    "name": "Vendor Risk Assessment Agent",
+    "category": "security",
+    "status": "built",
+    "github_url": "https://github.com/phanindraintelligenzit-afk/AgentsFactory/tree/gh-pages/projects/vendor-risk-assessment-agent",
+    "project_dir": "projects/vendor-risk-assessment-agent",
+    "created_at": "2026-06-29T10:00:00.000000+00:00"
+  }
+}

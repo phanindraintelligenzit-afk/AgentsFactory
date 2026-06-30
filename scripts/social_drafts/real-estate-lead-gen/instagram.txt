@@ -1,0 +1,8 @@
+🤖 Just built: Real Estate Lead Gen
+
+AI-powered lead generation team — scouts markets, qualifies leads from expired listings and pre-foreclosures, scores prospects using smart criteria, a...
+
+Includes 4 AI agents working in parallel.
+Full source code is free on GitHub.
+
+Link in bio → https://github.com/phanindraintelligenzit-afk/real-estate-lead-gen

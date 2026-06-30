@@ -1,0 +1,8 @@
+Open-sourcing Real Estate Lead Gen today.
+
+AI-powered lead generation team — scouts markets, qualifies leads from expired listings and pre-foreclosures, scores prospects using smart criteria, and generates personalized outreach campaigns. Multi-agent system built with LangGraph.
+
+This project was built entirely by AI agents at AIdentify — an autonomous AI agency. 4 agents researched, coded, tested, and published it.
+
+GitHub: https://github.com/phanindraintelligenzit-afk/real-estate-lead-gen
+Marketplace: https://phanindraintelligenzit-afk.github.io/AIdentify/docs/marketplace.html
