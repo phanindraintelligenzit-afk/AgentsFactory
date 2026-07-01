@@ -414,32 +414,88 @@
       ]
     },
     {
-      "id": "code-shield-sast",
-      "name": "CodeShield SAST",
-      "description": "Open-source Snyk/Semgrep alternative \u2014 AI-powered static application security testing with 25+ detection rules covering OWASP Top 10. Scan code snippets or repos, get risk scores and remediation guidance.",
-      "category": "security",
-      "icon": "\ud83d\udee1\ufe0f",
-      "tags": [
-        "SAST",
-        "Security Scanning",
-        "OWASP",
-        "Code Analysis",
-        "DevSecOps"
-      ],
-      "agents": 4,
-      "agents_list": [
-        "Pattern Engine \u2014 25+ regex-based detection rules for SQLi, XSS, SSRF, and more",
-        "Risk Scorer \u2014 Calculates 0-100 risk score weighted by severity",
-        "Remediation Advisor \u2014 Provides fix guidance for every finding",
-        "Scan Orchestrator \u2014 Manages scan lifecycle and result persistence"
-      ],
-      "github_url": "https://github.com/phanindraintelligenzit-afk/code-shield-sast",
-      "stars": 0,
-      "forks": 0,
-      "language": "Python",
-      "monetization": "Free self-hosted + $200-500/mo managed",
-      "status": "built",
-      "updated_at": "2026-06-30T09:00:00+00:00"
+          "id": "code-shield-sast",
+          "name": "CodeShield SAST",
+          "description": "Open-source Snyk/Semgrep alternative \u2014 AI-powered static application security testing with 25+ detection rules covering OWASP Top 10. Scan code snippets or repos, get risk scores and remediation guidance.",
+          "category": "security",
+          "icon": "\ud83d\udee1\ufe0f",
+          "tags": [
+            "SAST",
+            "Security Scanning",
+            "OWASP",
+            "Code Analysis",
+            "DevSecOps"
+          ],
+          "agents": 4,
+          "agents_list": [
+            "Pattern Engine \u2014 25+ regex-based detection rules for SQLi, XSS, SSRF, and more",
+            "Risk Scorer \u2014 Calculates 0-100 risk score weighted by severity",
+            "Remediation Advisor \u2014 Provides fix guidance for every finding",
+            "Scan Orchestrator \u2014 Manages scan lifecycle and result persistence"
+          ],
+          "github_url": "https://github.com/phanindraintelligenzit-afk/code-shield-sast",
+          "stars": 0,
+          "forks": 0,
+          "language": "Python",
+          "monetization": "Free self-hosted + $200-500/mo managed",
+          "status": "built",
+          "updated_at": "2026-06-30T09:00:00+00:00"
+        },
+        {
+          "id": "chorus-replacement-ai-sales-conversation-intellige",
+          "name": "Chorus Replacement - AI Sales Conversation Intelligence",
+          "description": "Open-source Chorus alternative - AI sales conversation intelligence that researches prospects, records calls, transcribes, analyzes sentiment, extracts insights, and coaches reps. Multi-agent: Researcher\u2192Recorder\u2192Analyzer\u2192Coach. Beats Chorus $8K/yr per-seat pricing.",
+          "category": "marketing",
+          "icon": "\ud83c\udfaf",
+          "tags": [
+            "Sales Intelligence",
+            "Conversation Analytics",
+            "Call Recording",
+            "AI Coaching",
+            "Multi-Agent"
+          ],
+          "agents": 4,
+          "agents_list": [
+            "Research Agent \u2014 Pre-call prospect research and context gathering",
+            "Recorder Agent \u2014 Call recording, transcription, and speaker diarization",
+            "Analyzer Agent \u2014 Sentiment analysis, topic extraction, competitive mentions",
+            "Coach Agent \u2014 Real-time coaching cues and post-call improvement feedback"
+          ],
+          "github_url": "https://github.com/phanindraintelligenzit-afk/chorus-replacement-ai-sales-conversation-intellige",
+          "stars": 0,
+          "forks": 0,
+          "language": "Python",
+          "monetization": "Free repo + $2K-5K setup",
+          "status": "built",
+          "updated_at": "2026-07-01T12:53:00+00:00"
+        },
+        {
+          "id": "pendo-replacement-ai-product-analytics-agent-inges",
+          "name": "Pendo Replacement - AI Product Analytics Agent",
+          "description": "Open-source Pendo alternative - AI product analytics agent that ingests events, auto-cohorts users, surfaces insights, tracks feature adoption, and predicts churn. Multi-agent: Ingest\u2192Cohorter\u2192InsightSurfer\u2192Predictor. Beats Pendo $12K/yr proprietary SDK pricing.",
+          "category": "marketing",
+          "icon": "\ud83c\udfaf",
+          "tags": [
+            "Product Analytics",
+            "Event Ingestion",
+            "Cohort Analysis",
+            "Churn Prediction",
+            "Multi-Agent"
+          ],
+          "agents": 4,
+          "agents_list": [
+            "Ingest Agent \u2014 Event ingestion, validation, and schema normalization",
+            "Cohorter Agent \u2014 Auto-cohort users by behavior, acquisition, features",
+            "InsightSurfer Agent \u2014 Surface adoption trends, friction points, opportunities",
+            "Predictor Agent \u2014 Churn risk scoring and retention forecasting"
+          ],
+          "github_url": "https://github.com/phanindraintelligenzit-afk/pendo-replacement-ai-product-analytics-agent-inges",
+          "stars": 0,
+          "forks": 0,
+          "language": "Python",
+          "monetization": "Free repo + $3K-8K setup",
+          "status": "built",
+          "updated_at": "2026-07-01T12:54:00+00:00"
+        }
+      ]
     }
-  ]
-}
