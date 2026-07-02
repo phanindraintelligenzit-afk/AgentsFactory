@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentsFactory Marketplace — AI Agent Products Built by Autonomous Swarm</title>
+<meta name="description" content="Browse AI agent products built autonomously by the AgentsFactory swarm. Multi-agent systems for compliance, security, marketing, legal, finance, and more.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235e6ad2'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='18'%3EAF%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #08090a;
+    --bg-panel: #0f1011;
+    --bg-surface: #191a1b;
+    --bg-elevated: #232427;
+    --bg-hover: rgba(255,255,255,0.05);
+    --text-primary: #f7f8f8;
+    --text-secondary: #d0d6e0;
+    --text-tertiary: #8a8f98;
+    --text-muted: #62666d;
+    --accent: #5e6ad2;
+    --accent-hover: #828fff;
+    --accent-glow: rgba(94,106,210,0.15);
+    --border-default: rgba(255,255,255,0.08);
+    --border-subtle: rgba(255,255,255,0.05);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+    --shadow-card: rgba(0,0,0,0.2) 0px 0px 0px 1px;
+    --shadow-elevated: rgba(0,0,0,0.4) 0px 2px 8px;
+    --shadow-modal: rgba(0,0,0,0.6) 0px 4px 24px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky; top:0; z-index:100;
+    background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 24px; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display:flex; align-items:center; gap:10px; font-weight:600; font-size:16px; color:var(--text-primary); text-decoration:none; letter-spacing:-0.32px; }
+  .nav-brand .logo { width:32px; height:32px; background:var(--accent); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:#fff; }
+  .nav-links { display:flex; align-items:center; gap:20px; }
+  .nav-link { color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; transition:color 0.15s; cursor:pointer; }
+  .nav-link:hover, .nav-link.active { color:var(--text-primary); }
+  .nav-stats { display:flex; align-items:center; gap:12px; }
+  .nav-stat { font-size:12px; color:var(--text-tertiary); }
+  .nav-stat strong { color:var(--text-primary); }
+  .btn-ghost {
+    background: transparent; border:1px solid var(--border-default); color:var(--text-secondary);
+    padding: 6px 12px; border-radius:var(--radius-sm); font-size:13px; font-weight:500;
+    cursor:pointer; transition: all 0.15s; font-family:inherit;
+  }
+  .btn-ghost:hover { background:var(--bg-hover); color:var(--text-primary); }
+  .btn-primary {
+    background: var(--accent); border:none; color: #fff;
+    padding: 8px 16px; border-radius:var(--radius-sm); font-size:13px; font-weight:600;
+    cursor:pointer; transition: all 0.15s; font-family:inherit;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+
+  /* MAIN LAYOUT */
+  .main { max-width:1280px; margin:0 auto; padding: 32px 24px; }
+  .hero { text-align:center; padding: 48px 0 40px; }
+  .hero h1 { font-size:40px; font-weight:600; letter-spacing:-1.056px; line-height:1.1; color:var(--text-primary); }
+  .hero p { font-size:16px; color:var(--text-tertiary); margin-top:12px; max-width:560px; margin-left:auto; margin-right:auto; }
+
+  /* SEARCH + FILTERS */
+  .controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:24px; }
+  .search-wrap { position:relative; flex:1; min-width:240px; }
+  .search-wrap svg { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); pointer-events:none; }
+  .search-input {
+    width:100%; padding:10px 12px 10px 38px; background:var(--bg-surface);
+    border:1px solid var(--border-default); border-radius:var(--radius-md);
+    color:var(--text-primary); font-size:14px; font-family:inherit;
+    outline:none; transition:border-color 0.2s;
+  }
+  .search-input:focus { border-color:var(--accent); }
+  .search-input::placeholder { color:var(--text-muted); }
+  .sort-select {
+    padding:10px 32px 10px 12px; background:var(--bg-surface);
+    border:1px solid var(--border-default); border-radius:var(--radius-md);
+    color:var(--text-primary); font-size:13px; font-family:inherit;
+    outline:none; cursor:pointer; appearance:none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a8f98' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 10px center;
+  }
+
+  /* CATEGORY FILTERS */
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+  .filter-chip {
+    padding: 5px 14px; border-radius:var(--radius-full); font-size:12px; font-weight:500;
+    background:transparent; border:1px solid var(--border-default); color:var(--text-secondary);
+    cursor:pointer; transition:all 0.15s; font-family:inherit;
+  }
+  .filter-chip:hover { background:var(--bg-hover); }
+  .filter-chip.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .filter-count { color:var(--text-muted); font-size:11px; margin-left:4px; }
+
+  /* GRID */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:16px; }
+  .card {
+    background:var(--bg-panel); border:1px solid var(--border-default);
+    border-radius:var(--radius-lg); padding:20px;
+    cursor:pointer; transition:all 0.2s; position:relative;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .card:hover { border-color:rgba(255,255,255,0.14); background:var(--bg-surface); transform:translateY(-1px); box-shadow:var(--shadow-elevated); }
+  .card-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+  .card-icon { font-size:24px; line-height:1; flex-shrink:0; }
+  .card-title { font-size:16px; font-weight:600; color:var(--text-primary); letter-spacing:-0.32px; line-height:1.3; }
+  .card-desc { font-size:13px; color:var(--text-tertiary); line-height:1.55; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .card-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:auto; }
+  .card-badge {
+    font-size:11px; padding:3px 8px; border-radius:var(--radius-full);
+    background:rgba(255,255,255,0.05); color:var(--text-tertiary);
+    font-weight:500;
+  }
+  .card-badge.accent { background:rgba(94,106,210,0.15); color:var(--accent-hover); }
+  .card-stats { display:flex; align-items:center; gap:10px; font-size:12px; color:var(--text-muted); }
+  .card-stat { display:flex; align-items:center; gap:4px; }
+  .card-stat svg { opacity:0.6; }
+
+  /* EMPTY STATE */
+  .empty { text-align:center; padding:60px 20px; color:var(--text-muted); }
+  .empty h3 { font-size:18px; color:var(--text-secondary); margin-bottom:8px; }
+  .empty p { font-size:14px; }
+
+  /* MODAL */
+  .modal-overlay {
+    display:none; position:fixed; inset:0; z-index:200;
+    background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
+    justify-content:center; align-items:center; padding:20px;
+  }
+  .modal-overlay.open { display:flex; }
+  .modal {
+    background:var(--bg-panel); border:1px solid var(--border-default);
+    border-radius:var(--radius-xl); max-width:680px; width:100%; max-height:85vh;
+    overflow-y:auto; box-shadow:var(--shadow-modal);
+  }
+  .modal-header { padding:20px 24px; border-bottom:1px solid var(--border-subtle); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; background:var(--bg-panel); z-index:1; }
+  .modal-close { background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:20px; padding:4px 8px; border-radius:var(--radius-sm); }
+  .modal-close:hover { color:var(--text-primary); background:var(--bg-hover); }
+  .modal-body { padding:24px; }
+  .modal-section { margin-bottom:24px; }
+  .modal-section h3 { font-size:13px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px; }
+  .modal .card-title { font-size:22px; }
+  .agent-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .agent-list li { font-size:13px; color:var(--text-secondary); padding:10px 12px; background:var(--bg-surface); border-radius:var(--radius-sm); border:1px solid var(--border-subtle); display:flex; align-items:center; gap:8px; }
+  .agent-num { width:22px; height:22px; border-radius:50%; background:var(--accent); color:#fff; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .tag-list { display:flex; flex-wrap:wrap; gap:6px; }
+  .tag { font-size:11px; padding:4px 10px; background:rgba(255,255,255,0.05); color:var(--text-tertiary); border-radius:var(--radius-full); border:1px solid var(--border-subtle); }
+  .star-btn {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:8px 16px; background:var(--bg-surface); border:1px solid var(--border-default);
+    border-radius:var(--radius-md); color:var(--text-secondary); font-size:13px; font-weight:500;
+    cursor:pointer; transition:all 0.15s; font-family:inherit;
+  }
+  .star-btn:hover { border-color:var(--accent); color:#f0c040; }
+  .star-btn.starred { border-color:#f0c040; color:#f0c040; background:rgba(240,192,64,0.08); }
+  .modal-actions { display:flex; gap:10px; flex-wrap:wrap; }
+  .comments-section { margin-top:8px; }
+
+  /* DASHBOARD */
+  .dashboard { display:none; }
+  .dashboard.open { display:block; }
+  .dashboard-header { display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+  .dashboard-avatar { width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:700; color:#fff; }
+  .dashboard-title { font-size:22px; font-weight:600; }
+  .dashboard-sub { color:var(--text-tertiary); font-size:14px; }
+  .dashboard-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin-bottom:32px; }
+  .stat-card { background:var(--bg-panel); border:1px solid var(--border-default); border-radius:var(--radius-md); padding:16px; }
+  .stat-card .stat-value { font-size:28px; font-weight:600; color:var(--text-primary); }
+  .stat-card .stat-label { font-size:12px; color:var(--text-muted); margin-top:4px; }
+  .saved-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:12px; }
+
+  /* RESPONSIVE */
+  @media (max-width:768px) {
+    .nav { padding:0 16px; }
+    .hero h1 { font-size:28px; letter-spacing:-0.704px; }
+    .hero p { font-size:14px; }
+    .grid { grid-template-columns:1fr; }
+    .controls { flex-direction:column; }
+    .search-wrap { min-width:100%; }
+    .sort-select { width:100%; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:var(--border-default); border-radius:3px; }
+  ::-webkit-scrollbar-thumb:hover { background:rgba(255,255,255,0.12); }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  .card { animation:fadeIn 0.3s ease forwards; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="#" onclick="showMarketplace()">
+    <div class="logo">AF</div>
+    AgentsFactory
+  </a>
+  <div class="nav-links">
+    <span class="nav-link active" onclick="showMarketplace()" id="nav-marketplace">Marketplace</span>
+    <span class="nav-link" onclick="showDashboard()" id="nav-dashboard">Dashboard</span>
+    <a class="nav-link" href="https://github.com/phanindraintelligenzit-afk/AgentsFactory" target="_blank">GitHub</a>
+  </div>
+  <div class="nav-stats" id="navStats"></div>
+</nav>
+
+<div class="main">
+  <!-- MARKETPLACE -->
+  <div id="marketplaceView">
+    <div class="hero">
+      <h1>AI Agent Products</h1>
+      <p>Autonomously built by the AgentsFactory swarm. Browse, star, and deploy production-ready multi-agent systems.</p>
+    </div>
+    <div class="controls">
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" placeholder="Search projects..." oninput="filterProjects()" id="searchInput">
+      </div>
+      <select class="sort-select" onchange="filterProjects()" id="sortSelect">
+        <option value="newest">Newest first</option>
+        <option value="stars">Most stars</option>
+        <option value="name">Name A-Z</option>
+      </select>
+    </div>
+    <div class="filters" id="filterBar"></div>
+    <div class="grid" id="projectGrid"></div>
+    <div class="empty" id="emptyState" style="display:none">
+      <h3>No projects found</h3>
+      <p>Try adjusting your search or filters.</p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboardView">
+    <div class="dashboard-header">
+      <div class="dashboard-avatar" id="dashAvatar">U</div>
+      <div>
+        <div class="dashboard-title">Your Dashboard</div>
+        <div class="dashboard-sub">Saved projects and activity</div>
+      </div>
+    </div>
+    <div class="dashboard-grid">
+      <div class="stat-card"><div class="stat-value" id="dashSaved">0</div><div class="stat-label">Saved Projects</div></div>
+      <div class="stat-card"><div class="stat-value" id="dashStarred">0</div><div class="stat-label">Starred on GitHub</div></div>
+      <div class="stat-card"><div class="stat-value" id="dashComments">0</div><div class="stat-label">Comments</div></div>
+    </div>
+    <div class="modal-section"><h3>Saved Projects</h3></div>
+    <div class="saved-grid" id="savedGrid"></div>
+    <div class="empty" id="savedEmpty"><p>No saved projects yet. Browse the marketplace and click the star to save.</p></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+// --- STATE ---
+var allProjects = [];
+var activeCategory = 'all';
+var currentView = 'marketplace';
+var savedProjects = JSON.parse(localStorage.getItem('af_saved') || '[]');
+var githubStarsCache = {};
+
+// --- INIT ---
+fetch('data/projects.json?' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    allProjects = (data.projects || []).map(normalizeProject);
+    renderAll();
+    loadGitHubStars();
+  })
+  .catch(() => {
+    // Fallback: try loading from relative path
+    fetch('docs/data/projects.json?' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        allProjects = (data.projects || []).map(normalizeProject);
+        renderAll();
+        loadGitHubStars();
+      })
+      .catch(() => {
+        document.getElementById('projectGrid').innerHTML = '<div class="empty"><h3>Loading projects...</h3><p>If this persists, check the data source.</p></div>';
+        allProjects = [];
+        renderAll();
+      });
+  });
+
+function normalizeProject(p) {
+  return {
+    id: p.id || p.slug || '',
+    name: p.name || p.title || 'Untitled',
+    description: p.description || p.tagline || '',
+    category: (p.category || 'other').toLowerCase(),
+    icon: p.icon || getCategoryIcon(p.category),
+    tags: p.tags || [],
+    agents: p.agents || (p.agents_list ? p.agents_list.length : 0),
+    agents_list: p.agents_list || [],
+    github_url: p.github_url || p.source_url || '',
+    stars: p.stars || 0,
+    forks: p.forks || 0,
+    language: p.language || 'Python',
+    monetization: p.monetization || '',
+    status: p.status || 'built',
+    updated_at: p.updated_at || p.created_at || p.date_added || '',
+    key_features: p.key_features || p.features || [],
+  };
+}
+
+function getCategoryIcon(cat) {
+  var icons = {
+    security: '🛡️', marketing: '🎯', legal: '⚖️', finance: '💰',
+    healthcare: '🏥', productivity: '⚡', devtools: '🔧', other: '🤖',
+    hr: '👥', ecommerce: '🛒', realestate: '🏠', operations: '🏗️', compliance: '🔒'
+  };
+  return icons[(cat||'').toLowerCase()] || '🤖';
+}
+
+// --- GITHUB STARS ---
+function loadGitHubStars() {
+  allProjects.forEach(function(p) {
+    var match = (p.github_url || '').match(/github\.com\/([^\/]+)\/([^\/]+)/);
+    if (!match) return;
+    var repo = match[1] + '/' + match[2].replace(/\/tree\/.*$/, '').replace(/\/$/, '');
+    fetch('https://api.github.com/repos/' + repo)
+      .then(r => r.json())
+      .then(data => {
+        if (data.stargazers_count !== undefined) {
+          p.stars = data.stargazers_count;
+          p.forks = data.forks_count || p.forks;
+          githubStarsCache[p.id] = data.stargazers_count;
+          updateCardStars(p.id, data.stargazers_count);
+        }
+      })
+      .catch(function(){});
+  });
+}
+
+function updateCardStars(id, count) {
+  var el = document.querySelector('[data-star-count="' + id + '"]');
+  if (el) el.textContent = count || 0;
+  var el2 = document.querySelector('[data-fork-count="' + id + '"]');
+  if (el2) {
+    var p = allProjects.find(function(x){return x.id===id;});
+    if (p) el2.textContent = p.forks || 0;
+  }
+}
+
+// --- RENDER ---
+function renderAll() {
+  renderFilters();
+  filterProjects();
+  updateNavStats();
+}
+
+function renderFilters() {
+  var cats = {};
+  allProjects.forEach(function(p) { cats[p.category] = (cats[p.category] || 0) + 1; });
+  var html = '<span class="filter-chip active" onclick="setCategory(\'all\')" id="chip-all">All<span class="filter-count">' + allProjects.length + '</span></span>';
+  Object.keys(cats).sort().forEach(function(c) {
+    html += '<span class="filter-chip" onclick="setCategory(\'' + c + '\')" id="chip-' + c + '">' + capitalize(c) + '<span class="filter-count">' + cats[c] + '</span></span>';
+  });
+  document.getElementById('filterBar').innerHTML = html;
+}
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function setCategory(cat) {
+  activeCategory = cat;
+  document.querySelectorAll('.filter-chip').forEach(function(c){c.classList.remove('active');});
+  var chip = document.getElementById('chip-' + cat);
+  if (chip) chip.classList.add('active');
+  filterProjects();
+}
+
+function filterProjects() {
+  var query = (document.getElementById('searchInput').value || '').toLowerCase();
+  var sortBy = document.getElementById('sortSelect').value;
+  var filtered = allProjects.filter(function(p) {
+    if (activeCategory !== 'all' && p.category !== activeCategory) return false;
+    if (query && !(p.name.toLowerCase().indexOf(query) >= 0 || p.description.toLowerCase().indexOf(query) >= 0 || p.tags.some(function(t){return t.toLowerCase().indexOf(query)>=0;}))) return false;
+    return true;
+  });
+
+  if (sortBy === 'stars') filtered.sort(function(a,b){return b.stars - a.stars;});
+  else if (sortBy === 'name') filtered.sort(function(a,b){return a.name.localeCompare(b.name);});
+  else filtered.sort(function(a,b){return new Date(b.updated_at||0) - new Date(a.updated_at||0);});
+
+  var grid = document.getElementById('projectGrid');
+  var empty = document.getElementById('emptyState');
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    grid.innerHTML = filtered.map(renderCard).join('');
+  }
+}
+
+function renderCard(p) {
+  var tagsHtml = p.tags.slice(0,3).map(function(t){return '<span class="card-badge">'+t+'</span>';}).join('');
+  return '<div class="card" onclick="openModal(\'' + p.id + '\')">' +
+    '<div class="card-header">' +
+      '<div class="card-icon">' + (p.icon || '🤖') + '</div>' +
+      '<div class="card-badge accent">' + p.agents + ' agents</div>' +
+    '</div>' +
+    '<div class="card-title">' + p.name + '</div>' +
+    '<div class="card-desc">' + p.description + '</div>' +
+    '<div class="card-meta">' +
+      tagsHtml +
+      '<div class="card-stats">' +
+        '<span class="card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span data-star-count="'+p.id+'">'+p.stars+'</span></span>' +
+        '<span class="card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-fork-count="'+p.id+'">'+p.forks+'</span></span>' +
+        '<span class="card-badge">'+p.language+'</span>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function updateNavStats() {
+  document.getElementById('navStats').innerHTML = '<span class="nav-stat"><strong>'+allProjects.length+'</strong> projects</span>';
+}
+
+// --- MODAL ---
+function openModal(id) {
+  var p = allProjects.find(function(x){return x.id===id;});
+  if (!p) return;
+  var isStarred = savedProjects.indexOf(id) >= 0;
+  var repoPath = (p.github_url || '').replace('https://github.com/','').replace(/\/tree\/.*$/,'').replace(/\/$/,'');
+
+  var html = '<div class="modal-header">' +
+    '<div style="display:flex;align-items:center;gap:10px;"><span style="font-size:28px">'+p.icon+'</span><span class="card-title">'+p.name+'</span></div>' +
+    '<button class="modal-close" onclick="closeModal()">✕</button>' +
+  '</div>' +
+  '<div class="modal-body">' +
+    '<p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">'+p.description+'</p>' +
+    '<div class="modal-actions">' +
+      '<button class="star-btn'+(isStarred?' starred':'')+'" onclick="toggleSave(\''+id+'\',this)">'+(isStarred?'★ Saved':'☆ Save')+'</button>' +
+      (p.github_url ? '<a href="'+p.github_url+'" target="_blank" class="btn-ghost" style="text-decoration:none">View on GitHub ↗</a>' : '') +
+    '</div>' +
+    (p.agents_list && p.agents_list.length > 0 ? '<div class="modal-section"><h3>Agent Architecture ('+p.agents+' agents)</h3><ul class="agent-list">'+p.agents_list.map(function(a,i){return '<li><span class="agent-num">'+(i+1)+'</span>'+a+'</li>';}).join('')+'</ul></div>' : '') +
+    (p.key_features && p.key_features.length > 0 ? '<div class="modal-section"><h3>Key Features</h3><div class="tag-list">'+p.key_features.map(function(f){return '<span class="tag">'+f+'</span>';}).join('')+'</div></div>' : '') +
+    (p.tags && p.tags.length > 0 ? '<div class="modal-section"><h3>Tags</h3><div class="tag-list">'+p.tags.map(function(t){return '<span class="tag">'+t+'</span>';}).join('')+'</div></div>' : '') +
+    (p.monetization ? '<div class="modal-section"><h3>Pricing</h3><p style="color:var(--text-secondary);font-size:14px;">'+p.monetization+'</p></div>' : '') +
+    '<div class="modal-section"><h3>Comments</h3><div class="comments-section" id="commentsContainer"></div></div>' +
+  '</div>';
+
+  document.getElementById('modal').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Load comments via GitHub Issues API
+  if (repoPath) {
+    loadComments(repoPath);
+  }
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleSave(id, btn) {
+  var idx = savedProjects.indexOf(id);
+  if (idx >= 0) {
+    savedProjects.splice(idx, 1);
+    btn.textContent = '☆ Save';
+    btn.classList.remove('starred');
+  } else {
+    savedProjects.push(id);
+    btn.textContent = '★ Saved';
+    btn.classList.add('starred');
+  }
+  localStorage.setItem('af_saved', JSON.stringify(savedProjects));
+  updateDashboard();
+}
+
+// --- COMMENTS (GitHub Issues API) ---
+function loadComments(repoPath) {
+  var container = document.getElementById('commentsContainer');
+  container.innerHTML = '<p style="color:var(--text-muted);font-size:13px;">Loading comments via GitHub Issues...</p>';
+
+  fetch('https://api.github.com/repos/' + repoPath + '/issues?per_page=10&sort=created')
+    .then(r => r.json())
+    .then(issues => {
+      if (!Array.isArray(issues) || issues.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted);font-size:13px;">No comments yet. <a href="https://github.com/'+repoPath+'/issues" target="_blank" style="color:var(--accent-hover)">Start a discussion on GitHub →</a></p>';
+        return;
+      }
+      container.innerHTML = issues.map(function(issue) {
+        return '<div style="padding:12px 0;border-bottom:1px solid var(--border-subtle)">' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">' +
+            '<span style="font-size:14px;font-weight:600;color:var(--text-primary)">'+escHtml(issue.title)+'</span>' +
+            '<span style="font-size:11px;color:var(--text-muted)">#'+issue.number+'</span>' +
+          '</div>' +
+          '<div style="font-size:12px;color:var(--text-tertiary)">by <strong>'+escHtml(issue.user.login)+'</strong> · '+issue.comments+' comment(s) · '+(issue.labels||[]).map(function(l){return '<span style="background:#'+l.color+'20;color:#'+l.color+';padding:1px 6px;border-radius:10px;font-size:10px;margin-right:4px">'+l.name+'</span>';}).join('')+'</div>' +
+        '</div>';
+      }).join('') +
+      '<a href="https://github.com/'+repoPath+'/issues" target="_blank" style="display:block;margin-top:12px;color:var(--accent-hover);font-size:13px;">View all discussions on GitHub →</a>';
+    })
+    .catch(function() {
+      container.innerHTML = '<p style="color:var(--text-muted);font-size:13px;">Comments powered by <a href="https://github.com/'+repoPath+'/issues" target="_blank" style="color:var(--accent-hover)">GitHub Issues</a>. Click to view discussions.</p>';
+    });
+}
+
+function escHtml(s) { var d=document.createElement('div');d.textContent=s;return d.innerHTML; }
+
+// --- DASHBOARD ---
+function showDashboard() {
+  currentView = 'dashboard';
+  document.getElementById('marketplaceView').style.display = 'none';
+  document.getElementById('dashboardView').classList.add('open');
+  document.getElementById('nav-marketplace').classList.remove('active');
+  document.getElementById('nav-dashboard').classList.add('active');
+  updateDashboard();
+}
+
+function showMarketplace() {
+  currentView = 'marketplace';
+  document.getElementById('marketplaceView').style.display = '';
+  document.getElementById('dashboardView').classList.remove('open');
+  document.getElementById('nav-marketplace').classList.add('active');
+  document.getElementById('nav-dashboard').classList.remove('active');
+}
+
+function updateDashboard() {
+  var saved = allProjects.filter(function(p){return savedProjects.indexOf(p.id)>=0;});
+  document.getElementById('dashSaved').textContent = saved.length;
+  document.getElementById('dashStarred').textContent = saved.reduce(function(s,p){return s+(p.stars||0);},0);
+  document.getElementById('dashComments').textContent = '--';
+
+  var grid = document.getElementById('savedGrid');
+  var empty = document.getElementById('savedEmpty');
+  if (saved.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    grid.innerHTML = saved.map(renderCard).join('');
+  }
+}
+
+// --- KEYBOARD ---
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); document.getElementById('searchInput').focus(); }
+});
+</script>
+</body>
+</html>
